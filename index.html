@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HungerGo</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2493fc77de.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+
+            <div id="navbarL">
+                <img src="logo.png" width="50px">
+                <div>🟩 PURE VEG</div>
+            </div>
+
+            <div id="navbarR">
+                <div><a class="links" href="#home">Home</a></div>
+                <div><a class="links" href="#menu">Menu</a></div>
+                <div><a class="links" href="#reviews">Reviews</a></div>
+                <div><a class="links" href="#about">About</a></div>
+                <div><a class="links" href="#reserve">Reserve A Table</a></div>
+                <div><i style="color:rgb(0, 4, 255)" class="fa-solid fa-circle-user"></i></div>
+                <div><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist"></span></div>
+                <div><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart"></span> </div>
+                <div><i style="color:goldenrod" id="toggle" class="fa-solid fa-sun"></i></div>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <div id="drawer">
+        
+    </div>
+
+    <section id="home">
+
+        <video autoplay muted loop>
+            <source src="food.mp4">
+        </video>
+
+        <div id="hometext">
+            <h2>Your Go-To Spot When Hunger Hits</h2>
+            <h1>HungerGo</h1>
+            <p>Bringing your favorite meals right to your doorstep</p>
+
+            <button> View Menu </button>
+            <button class="reservebutton"> Reserve a Table </button>
+        </div>
+
+    </section>
+
+    
+    <section id="menu">
+
+        <h2>Our Menu</h2>
+        <h1>What Are You Craving Today?</h1>
+        <p>A wide range of cuisines and flavours curated just for you</p>
+
+        <section id="food">
+
+            <input type="text" placeholder="🔍 Search your favourite dish...">
+
+            <div id="categories">
+                <div>
+                    <img src="" alt="All">
+                    All
+                </div>
+                <div>
+                    <img src="" alt="Appetizers">
+                    Appetizers
+                </div>
+                <div>
+                    <img src="" alt="Pizza">
+                    Pizza
+                </div>
+                <div>
+                    <img src="" alt="Burgers">
+                    Burgers
+                </div>
+                <div>
+                    <img src="" alt="Pasta">
+                    Pasta
+                </div>
+                <div>
+                    <img src="" alt="Noodles">
+                    Noodles
+                    </div>
+                <div>
+                    <img src="" alt="Sandwiches & Wraps">
+                    Sandwiches & Wraps
+                </div>
+                <div>
+                    <img src="" alt="North Indian">
+                    North Indian
+                </div>
+                <div>
+                    <img src="" alt="South Indian">
+                    South Indian
+                </div>
+                <div>
+                    <img src="" alt="Rice & Biryani">
+                    Rice & Biryani
+                </div>
+                <div>
+                    <img src="" alt="Desserts">
+                    Desserts
+                </div>
+                <div>
+                    <img src="" alt="Beverages">
+                    Beverages
+                </div>
+                <div>
+                    <img src="" alt="Salads">
+                    Salads
+                </div>
+            </div>
+
+            <div id="filters">
+                <div><i class="fa-solid fa-sliders"></i>Filters</div>
+
+                <div> Rating <i class="fa-solid fa-angle-down"></i></div>
+                <div> Price <i class="fa-solid fa-angle-down"></i></div>
+                <div> Cuisine <i class="fa-solid fa-angle-down"></i></div>
+
+                <div><i class="fa-solid fa-arrows-rotate"></i>Clear Filters</div>
+            </div>
+
+            <div class="container">
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <section id="reserve">
+
+        <h2>Reserve Your Table</h2>
+        <h1>Enjoy a Dining Experience You'll Remember</h1>
+        <p>Reserve your table in advance and let us take care of the rest
+           <br>
+           Perfect for family dinners, date nights, celebrations, and casual meetups
+        </p>
+
+        <div>
+
+            <div id="left">
+                <img src="" alt="">
+                <div class="left">
+                    <div>📍 Address </div>
+                    <div> 📞 Contact  </div>
+                    <div>🕒 Opening Hours </div>
+                </div>
+                <div class="right">
+                    <div>HungerGo</div>
+                    <div>+91 XXXXX XXXXX</div>
+                    <div>Mon-Sun : 11 AM - 11 PM </div>
+                </div>
+                <div>
+                    <p>Arrive with ease. Dine in comfort. Leave with memories</p>
+                    <div>Hassle-Free Parking</div>
+                    <div>Fully Air-Conditioned Dining</div>
+                </div>
+            </div>
+
+            <div id="right">
+
+                <form id="reservetable" action="#" method="POST">
+
+                    <div>
+                        <label for="name">Full Name</label>
+                        <input id="name" type="text" placeholder="Mahesh Kumar" required>
+                    </div>
+                    
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    
+                    <div>
+                        <label for="guests">Number of Guests <i class="fa-solid fa-angle-down"></i></label>
+                        <select id="guests" required>
+                            <option selected disabled>Select number of guests</option>
+                            <option>1 Person</option>
+                            <option>2 People</option>
+                            <option>3 People</option>
+                            <option>4 People</option>
+                            <option>5 People</option>
+                            <option>6+ People</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="date">Date <i class="fa-solid fa-angle-down"></i></label>
+                        <select id="date" required>
+                            <option selected disabled>Select Date</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="time">Preferred Time</label>
+                        <input id="time" type="time" required>
+                    </div>
+                    
+                    <div>
+                        <label for="occasion">Special Occasion <i class="fa-solid fa-angle-down"></i></label>
+                        <select id="occasion">
+                            <option selected disabled>Select Occasion</option>
+                            <option>Birthday</option>
+                            <option>Anniversary</option>
+                            <option>Kitty Party</option>
+                            <option>Couple's Dining</option>
+                            <option>Corporate Dinner / Business Meeting</option>
+                            <option>Family Gathering</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="request">Special Request</label>
+                        <input  id="request" type="text" placeholder="Please arrange a 500g Chocolate Cake">
+                    </div>
+                    
+                    <button>Reserve Table</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="reviews">
+        <h2>Because Great Food Deserves A Great Experience</h2>
+        <h1>What Our Customers Say</h1>
+
+        <div id="reviewscontainer"></div>
+
+    </section>
+
+
+    <section id="about">
+
+        <h2>Built For The Moments When Hunger Can’t Wait.</h2>
+        <h1>About HungerGo</h1>
+        <p>HungerGo brings comfort, flavor, and fast delivery together in one place. From pizzas to late-night desserts, every order is made to turn cravings into moments worth remembering.</p>
+
+        <div id="def">
+            <div class="l">
+
+            </div>
+            <div class="r">
+                <div><h3>What defines us</h3></div>
+
+                <div>Fast delivery that never keeps you waiting</div>
+                <div>Food that feels like comfort in every bite</div> 
+                <div>A promise of quality, every single time</div>
+            </div>
+        </div>
+
+        <p>More than a meal—it's the HungerGo experience.</p>
+        
+        <hr>
+
+        <h2>Connect with us on</h2>
+        <div>
+            <div><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></div>
+            <div><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></div>
+            <div><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></div>
+        </div>
+        
+    </section>
+
+
+    <footer>
+        <p> 2026 <i class="fa-regular fa-copyright"></i> HungerGo. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
