@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> HungerGo</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
         <nav>
 
             <div id="navbarL">
-                <img src="logo.png" width="50px">
+                <img src="images/logo.png" width="50px">
                 <div>🟩 PURE VEG</div>
             </div>
 
@@ -26,7 +26,7 @@
                 <div><a class="links" href="#reviews">Reviews</a></div>
                 <div><a class="links" href="#about">About</a></div>
                 <div><a class="links" href="#reserve">Reserve A Table</a></div>
-                <div><i style="color:rgb(0, 4, 255)" class="fa-solid fa-circle-user"></i></div>
+                <div><i style="color: rgb(37, 154, 250)" class="fa-solid fa-circle-user"></i></div>
                 <div><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist"></span></div>
                 <div><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart"></span> </div>
                 <div><i style="color:goldenrod" id="toggle" class="fa-solid fa-sun"></i></div>
@@ -51,7 +51,7 @@
             <h1>HungerGo</h1>
             <p>Bringing your favorite meals right to your doorstep</p>
 
-            <button> View Menu </button>
+            <button class="viewmenu"> View Menu </button>
             <button class="reservebutton"> Reserve a Table </button>
         </div>
 
@@ -60,77 +60,83 @@
     
     <section id="menu">
 
-        <h2>Our Menu</h2>
-        <h1>What Are You Craving Today?</h1>
-        <p>A wide range of cuisines and flavours curated just for you</p>
+        
+        <h2 class="menuhead">Our Menu</h2>
+        <h1 class="menuhead">What Are You Craving Today?</h1>
+        <p class="menuhead">A wide range of cuisines and flavours curated just for you</p>
+        
 
         <section id="food">
-
-            <input type="text" placeholder="🔍 Search your favourite dish...">
+            <div class="search">
+                <input id="searchbar" type="text" placeholder="Search your favourite dish...">
+                <div id="searchicon"><i class="fa-solid fa-magnifying-glass" style="color: #554e4eec;"></i></div>
+            </div>
 
             <div id="categories">
-                <div>
-                    <img src="" alt="All">
-                    All
+                <div class="categoriescard">
+                    <img src="images/all.jpg" alt="All">
+                    <div class="categoriescardtext">All</div>
                 </div>
-                <div>
-                    <img src="" alt="Appetizers">
-                    Appetizers
+                <div class="categoriescard">
+                    <img src="images/momos.jpg" alt="Appetizers">
+                    <div class="categoriescardtext">Appetizers</div>
                 </div>
-                <div>
-                    <img src="" alt="Pizza">
-                    Pizza
+                <div class="categoriescard">
+                    <img src="images/margherita pizza.jpg" alt="Pizza">
+                    <div class="categoriescardtext">Pizza</div>
                 </div>
-                <div>
-                    <img src="" alt="Burgers">
-                    Burgers
+                <div class="categoriescard">
+                    <img src="images/veg burger.jpg" alt="Burgers">
+                    <div class="categoriescardtext">Burgers</div>
                 </div>
-                <div>
-                    <img src="" alt="Pasta">
-                    Pasta
+                <div class="categoriescard">
+                    <img src="images/red sauce pasta.jpg" alt="Pasta">
+                    <div class="categoriescardtext">Pasta</div>
                 </div>
-                <div>
-                    <img src="" alt="Noodles">
-                    Noodles
+                <div class="categoriescard">
+                    <img src="images/noodles.jpg" alt="Noodles">
+                    <div class="categoriescardtext">Noodles</div>
                     </div>
-                <div>
-                    <img src="" alt="Sandwiches & Wraps">
-                    Sandwiches & Wraps
+                <div class="categoriescard">
+                    <img src="images/veg wraps.jpg" alt="Wraps">
+                    <div class="categoriescardtext">Wraps</div>
                 </div>
-                <div>
-                    <img src="" alt="North Indian">
-                    North Indian
+                <div class="categoriescard">
+                    <img src="images/dal makhni.jpg" alt="North Indian">
+                    <div class="categoriescardtext">North Indian</div>
                 </div>
-                <div>
-                    <img src="" alt="South Indian">
-                    South Indian
+                <div class="categoriescard">
+                    <img src="images/dosa.jpg" alt="South Indian">
+                    <div class="categoriescardtext">South Indian</div>
                 </div>
-                <div>
-                    <img src="" alt="Rice & Biryani">
-                    Rice & Biryani
+                <div class="categoriescard">
+                    <img src="images/biryani.jpg" alt="Rice & Biryani">
+                    <div class="categoriescardtext">Rice & Biryani</div>
                 </div>
-                <div>
-                    <img src="" alt="Desserts">
-                    Desserts
+                <div class="categoriescard">
+                    <img src="images/cheesecake.jpg" alt="Desserts">
+                    <div class="categoriescardtext">Desserts</div>
                 </div>
-                <div>
-                    <img src="" alt="Beverages">
-                    Beverages
+                <div class="categoriescard">
+                    <img src="images/iced tea.jpg" alt="Beverages">
+                    <div class="categoriescardtext">Beverages</div>
                 </div>
-                <div>
-                    <img src="" alt="Salads">
-                    Salads
+                <div class="categoriescard">
+                    <img src="images/salad.jpg" alt="Salads">
+                    <div class="categoriescardtext">Salads</div>
                 </div>
             </div>
 
             <div id="filters">
-                <div><i class="fa-solid fa-sliders"></i>Filters</div>
+                <div><i  class=" icons fa-solid fa-sliders"></i>Filters</div>
 
-                <div> Rating <i class="fa-solid fa-angle-down"></i></div>
-                <div> Price <i class="fa-solid fa-angle-down"></i></div>
-                <div> Cuisine <i class="fa-solid fa-angle-down"></i></div>
+                <div class="filteroptions">
+                    <div> Rating <i class="fa-solid fa-angle-down"></i></div>
+                    <div> Price <i class="fa-solid fa-angle-down"></i></div>
+                    <div> Cuisine <i class="fa-solid fa-angle-down"></i></div>
+                </div>
 
-                <div><i class="fa-solid fa-arrows-rotate"></i>Clear Filters</div>
+                <div class="clearfilters"><i class="icons fa-solid fa-arrows-rotate"></i>Clear Filters</div>
             </div>
 
             <div class="container">
@@ -144,89 +150,79 @@
 
     <section id="reserve">
 
-        <h2>Reserve Your Table</h2>
-        <h1>Enjoy a Dining Experience You'll Remember</h1>
-        <p>Reserve your table in advance and let us take care of the rest
-           <br>
-           Perfect for family dinners, date nights, celebrations, and casual meetups
-        </p>
+        <div class="res">
+            <h2 class="reservehead">Every great meal begins with a stress-free arrival.</h2>
+            <h1 class="reservehead">Reserve Your Table</h1>
+            <p class="reservehead">Reserve your table in advance and let us take care of the rest</p>   
+        </div>
 
-        <div>
+        <div class="reserve">
 
             <div id="left">
-                <img src="" alt="">
-                <div class="left">
-                    <div>📍 Address </div>
-                    <div> 📞 Contact  </div>
-                    <div>🕒 Opening Hours </div>
-                </div>
-                <div class="right">
-                    <div>HungerGo</div>
-                    <div>+91 XXXXX XXXXX</div>
-                    <div>Mon-Sun : 11 AM - 11 PM </div>
-                </div>
-                <div>
-                    <p>Arrive with ease. Dine in comfort. Leave with memories</p>
-                    <div>Hassle-Free Parking</div>
-                    <div>Fully Air-Conditioned Dining</div>
-                </div>
+                <img src="images/closeshot.png" alt="Your Table">
             </div>
 
             <div id="right">
 
                 <form id="reservetable" action="#" method="POST">
 
-                    <div>
-                        <label for="name">Full Name</label>
-                        <input id="name" type="text" placeholder="Mahesh Kumar" required>
+                    <div class="part">
+                        <div>
+                            <label for="name">Full Name</label>
+                            <input id="name" type="text" placeholder="Mahesh Kumar" required>
+                        </div>
+                    
+                        <div>
+                            <label for="phone">Phone Number</label>
+                            <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
                     </div>
                     
-                    <div>
-                        <label for="phone">Phone Number</label>
-                        <input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
+                    <div class="part">
+                        <div>
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" required>
+                                <option selected disabled>Select number of guests</option>
+                                <option>1 Person</option>
+                                <option>2 People</option>
+                                <option>3 People</option>
+                                <option>4 People</option>
+                                <option>5 People</option>
+                                <option>6+ People</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="date">Date</i></label>
+                            <select id="date" required>
+                                <option selected disabled>Select Date</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="time">Preferred Time</label>
+                            <input id="time" type="time" required>
+                        </div>
                     </div>
                     
-                    <div>
-                        <label for="guests">Number of Guests <i class="fa-solid fa-angle-down"></i></label>
-                        <select id="guests" required>
-                            <option selected disabled>Select number of guests</option>
-                            <option>1 Person</option>
-                            <option>2 People</option>
-                            <option>3 People</option>
-                            <option>4 People</option>
-                            <option>5 People</option>
-                            <option>6+ People</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="date">Date <i class="fa-solid fa-angle-down"></i></label>
-                        <select id="date" required>
-                            <option selected disabled>Select Date</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="time">Preferred Time</label>
-                        <input id="time" type="time" required>
-                    </div>
-                    
-                    <div>
-                        <label for="occasion">Special Occasion <i class="fa-solid fa-angle-down"></i></label>
-                        <select id="occasion">
-                            <option selected disabled>Select Occasion</option>
-                            <option>Birthday</option>
-                            <option>Anniversary</option>
-                            <option>Kitty Party</option>
-                            <option>Couple's Dining</option>
-                            <option>Corporate Dinner / Business Meeting</option>
-                            <option>Family Gathering</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="request">Special Request</label>
-                        <input  id="request" type="text" placeholder="Please arrange a 500g Chocolate Cake">
+                    <div class="part">
+                        <div>
+                            <label for="occasion">Special Occasion</label>
+                            <select id="occasion">
+                                <option selected disabled>Select Occasion</option>
+                                <option>Birthday</option>
+                                <option>Anniversary</option>
+                                <option>Kitty Party</option>
+                                <option>Couple's Dining</option>
+                                <option>Corporate Dinner / Business Meeting</option>
+                                <option>Family Gathering</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="request">Special Request</label>
+                            <input  id="request" type="text" placeholder="Please arrange a 500g Chocolate Cake">
+                        </div>
                     </div>
                     
                     <button>Reserve Table</button>
@@ -237,12 +233,27 @@
 
         </div>
 
+        <div class="info">
+            <div><strong><i class="fa-solid fa-location-dot"></i> Address : </strong>HungerGo</div>
+            <div><strong><i class="fa-solid fa-phone"></i> Contact :</strong>+91 XXXXX XXXXX</div>
+            <div><strong><i class="fa-regular fa-clock"></i> Opening Hours :</strong> Mon-Sun : 11 AM - 11 PM </div>
+        </div>
+        <div class="closing">
+            <p>Arrive with ease. Dine in comfort. Leave with memories</p>
+            <div class="extra">
+                <div>Hassle-Free Parking</div>
+                <div>Fully Air-Conditioned Dining</div>
+            </div>
+        </div>      
+
     </section>
 
 
     <section id="reviews">
-        <h2>Because Great Food Deserves A Great Experience</h2>
-        <h1>What Our Customers Say</h1>
+        <div class="review">
+            <h2 class="reviewhead">Because Great Food Deserves A Great Experience</h2>
+            <h1 class="reviewhead">What Our Customers Say</h1>
+        </div>
 
         <div id="reviewscontainer"></div>
 
@@ -251,32 +262,41 @@
 
     <section id="about">
 
-        <h2>Built For The Moments When Hunger Can’t Wait.</h2>
-        <h1>About HungerGo</h1>
-        <p>HungerGo brings comfort, flavor, and fast delivery together in one place. From pizzas to late-night desserts, every order is made to turn cravings into moments worth remembering.</p>
-
+        <div class="about">
+            <h2 class="abouthead">Built For The Moments When Hunger Can’t Wait.</h2>
+            <h1 class="abouthead">About HungerGo</h1>
+            <p class="abouthead">HungerGo brings comfort, flavor, and fast delivery together in one place.<br> From pizzas to late-night desserts, every order is made to turn cravings into moments worth remembering.</p>
+        </div>
         <div id="def">
             <div class="l">
-
+                <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="aboutimages">
+                    <img class="slide" src="images/outside.png" alt="Exterior">
+                    <img class="slide" src="images/wideshot.png" alt="Dining Area">
+                    <img class="slide" src="images/painting.png" alt="Aesthetic Corner">
+                    <img class="slide active" src="images/kitchen.png" alt="Kitchen">
+                </div>
             </div>
             <div class="r">
-                <div><h3>What defines us</h3></div>
-
-                <div>Fast delivery that never keeps you waiting</div>
-                <div>Food that feels like comfort in every bite</div> 
-                <div>A promise of quality, every single time</div>
+                <div><h2>What defines us</h2></div>
+                <ul>
+                    <li>Fast delivery that never keeps you waiting</li>
+                    <li>Food that feels like comfort in every bite</li>
+                    <li>A promise of quality, every single time</li>
+                </ul>
             </div>
         </div>
 
-        <p>More than a meal—it's the HungerGo experience.</p>
-        
-        <hr>
+        <p class="aboutclosing">More than a meal—it's the HungerGo experience.</p>
 
-        <h2>Connect with us on</h2>
-        <div>
-            <div><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></div>
-            <div><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></div>
-            <div><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></div>
+        <div class="contact">
+            <h2>Connect with us on</h2>
+            <div id="socials">
+                <div><a href="#"><i class="icons fa-brands fa-instagram"></i>Instagram</a></div>
+                <div><a href="#"><i class="icons fa-brands fa-facebook"></i>Facebook</a></div>
+                <div><a href="#"><i class="icons fa-brands fa-youtube"></i>Youtube</a></div>
+            </div>
         </div>
         
     </section>
