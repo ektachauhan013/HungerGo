@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/2493fc77de.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,12 +24,13 @@
             <div id="navbarR">
                 <div><a class="links" href="#home">Home</a></div>
                 <div><a class="links" href="#menu">Menu</a></div>
+                <div><a class="links" href="#reserve">Reserve A Table</a></div>
                 <div><a class="links" href="#reviews">Reviews</a></div>
                 <div><a class="links" href="#about">About</a></div>
-                <div><a class="links" href="#reserve">Reserve A Table</a></div>
+                
                 <div><i style="color: rgb(37, 154, 250)" class="fa-solid fa-circle-user"></i></div>
-                <div><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist"></span></div>
-                <div><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart"></span> </div>
+                <div><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist">0</span></div>
+                <div><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart">0</span> </div>
                 <div><i style="color:goldenrod" id="toggle" class="fa-solid fa-sun"></i></div>
             </div>
 
@@ -67,9 +69,12 @@
         
 
         <section id="food">
-            <div class="search">
-                <input id="searchbar" type="text" placeholder="Search your favourite dish...">
-                <div id="searchicon"><i class="fa-solid fa-magnifying-glass" style="color: #554e4eec;"></i></div>
+            <div class="searchcontainer">
+                <div class="search">
+                    <input id="searchbar" type="text" placeholder="Search your favourite dish...">
+                    <div id="searchicon"><i class="fa-solid fa-magnifying-glass" style="color: #554e4eec;"></i></div>
+                </div>
+                <div class="suggestionbox"></div>
             </div>
 
             <div id="categories">
@@ -78,51 +83,47 @@
                     <div class="categoriescardtext">All</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/momos.jpg" alt="Appetizers">
+                    <img src="images/Appetizers/momos.jpg" alt="Appetizers">
                     <div class="categoriescardtext">Appetizers</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/margherita pizza.jpg" alt="Pizza">
+                    <img src="images/pizza/margherita pizza.jpg" alt="Pizza">
                     <div class="categoriescardtext">Pizza</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/veg burger.jpg" alt="Burgers">
+                    <img src="images/Burgers/Classic veg burger.jpg" alt="Burgers">
                     <div class="categoriescardtext">Burgers</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/red sauce pasta.jpg" alt="Pasta">
+                    <img src="images/Pasta/Classic red sauce pasta.jpg" alt="Pasta">
                     <div class="categoriescardtext">Pasta</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/noodles.jpg" alt="Noodles">
+                    <img src="images/Noodles/schezwan noodles.jpg" alt="Noodles">
                     <div class="categoriescardtext">Noodles</div>
-                    </div>
-                <div class="categoriescard">
-                    <img src="images/veg wraps.jpg" alt="Wraps">
-                    <div class="categoriescardtext">Wraps</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/dal makhni.jpg" alt="North Indian">
+                    <img src="images/North Indian/dal makhani.jpg" alt="North Indian">
                     <div class="categoriescardtext">North Indian</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/dosa.jpg" alt="South Indian">
+                    <img src="images/South Indian/Masala dosa.jpg" alt="South Indian">
                     <div class="categoriescardtext">South Indian</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/biryani.jpg" alt="Rice & Biryani">
+                    <img src="images/Rice & Biryani/veg biryani.jpg" alt="Rice & Biryani">
                     <div class="categoriescardtext">Rice & Biryani</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/cheesecake.jpg" alt="Desserts">
+                    <img src="images/Desserts/cheesecake.jpg" alt="Desserts">
                     <div class="categoriescardtext">Desserts</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/iced tea.jpg" alt="Beverages">
+                    <img src="images/Beverages/kulhad masala chai.jpg" alt="Beverages">
                     <div class="categoriescardtext">Beverages</div>
                 </div>
                 <div class="categoriescard">
-                    <img src="images/salad.jpg" alt="Salads">
+                    <img src="images/Salads/fresh green salad.jpg" alt="Salads">
                     <div class="categoriescardtext">Salads</div>
                 </div>
             </div>
@@ -133,7 +134,7 @@
                 <div class="filteroptions">
                     <div> Rating <i class="fa-solid fa-angle-down"></i></div>
                     <div> Price <i class="fa-solid fa-angle-down"></i></div>
-                    <div> Cuisine <i class="fa-solid fa-angle-down"></i></div>
+                    <div> Best Sellers <i class="fa-solid fa-angle-down"></i></div>
                 </div>
 
                 <div class="clearfilters"><i class="icons fa-solid fa-arrows-rotate"></i>Clear Filters</div>
@@ -159,7 +160,7 @@
         <div class="reserve">
 
             <div id="left">
-                <img src="images/closeshot.png" alt="Your Table">
+                <img src="images/Restaurant/closeshot.png" alt="Your Table">
             </div>
 
             <div id="right">
@@ -272,10 +273,10 @@
                 <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
                 <div class="aboutimages">
-                    <img class="slide" src="images/outside.png" alt="Exterior">
-                    <img class="slide" src="images/wideshot.png" alt="Dining Area">
-                    <img class="slide" src="images/painting.png" alt="Aesthetic Corner">
-                    <img class="slide active" src="images/kitchen.png" alt="Kitchen">
+                    <img class="slide active" src="images/Restaurant/outside.png" alt="Exterior">
+                    <img class="slide" src="images/Restaurant/wideshot.png" alt="Dining Area">
+                    <img class="slide" src="images/Restaurant/painting.png" alt="Aesthetic Corner">
+                    <img class="slide" src="images/Restaurant/kitchen.png" alt="Kitchen">
                 </div>
             </div>
             <div class="r">

@@ -3,6 +3,28 @@
     font-family: "poppins",sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #EDEAE6;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #CFC9C2;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(65, 64, 64, 0.852);
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #FAF9F6;
     margin:0px;
@@ -18,7 +40,7 @@ nav{
     position:fixed;
     top:0;
     left:0;
-    z-index: 10;
+    z-index: 1000;
     height:70px;
     width:100%;
 }
@@ -164,18 +186,35 @@ p.menuhead{
     font-weight: 450;
 }
 
+.searchcontainer{
+    width:100%;
+    max-width:655px;
+    margin:50px auto 100px auto;
+    position:relative;
+}
+
 .search{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin:50px auto;
     width:100%;
-    max-width:655px;
     background-color: #FFFFFF;
     border: 1px solid rgba(255, 82, 52, 0.2); 
     border-radius: 10px;
     overflow: hidden;
 }
+
+.search.active {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-disabled{
+    pointer-events: none;
+    opacity: 0.8;
+}
+
 
 #searchbar{
     width:100%;
@@ -186,6 +225,35 @@ p.menuhead{
     outline:none;
 }
 
+.search:hover{
+    border-color: rgba(255, 82, 52, 0.45);
+}
+
+.search:focus-within{
+    border: 2px solid #FF5234;
+}
+
+.suggestionbox{
+    position:absolute;
+    top:100%;
+    left:0;
+    padding:20px;
+    text-align: left;
+    background-color: #FFFFFF;
+    width:100%;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-right: 1px solid #FF5234;
+    border-left: 1px solid #FF5234;
+    border-bottom: 1px solid #FF5234;
+    white-space: nowrap;
+    font-size: 20px;
+    display:none;
+    z-index:100;
+}
 
 #searchicon{
     width:55px;
@@ -310,6 +378,116 @@ p.menuhead{
 
 .icons{
     margin:5px;
+}
+
+.container{
+    margin:100px auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width:100%;
+    padding:20px;
+}
+
+.foodcard{
+    position:relative;
+    margin:10px;
+    padding:10px;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0px 2px 10px 0px rgb(155, 147, 147); */
+    transition: all 0.3s ease-out ;
+}
+
+.foodcard:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 2px 20px 0px rgb(130, 124, 124);
+}
+
+.foodcard img{
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    border:1px solid rgb(170, 168, 168);
+}
+
+.foodoptions{
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:10;
+    display:flex;
+    flex-direction: column;
+    padding:10px;
+    font-size: 25px;
+}
+
+.foodoptions div{
+    margin:5px;
+    height:40px;
+    width:40px;
+    background-color: white;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foodname,.fooddesc{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px 10px;
+}
+
+.foodname{
+    margin-top: 10px;
+}
+
+.foodname .name{
+    width:80%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    display:flex;
+    align-items: center;
+}
+
+.foodname .rating i{
+    font-size: 12px;
+}
+
+.fooddesc .category{
+    color:#554E4E;
+    text-align: left;
+    display:flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.fooddesc .price{
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.foodname .rating{
+    width:60px;
+    border-radius: 10px;
+    background-color: green;
+    padding:5px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foodtime{
+    padding:5px 10px;
+    width:100%;
+    text-align: right;
 }
 
 #reserve{
@@ -471,6 +649,7 @@ form button:active{
 .extra div{
     padding:10px;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.333);
+    border:1px solid black;
 }
 
 #reviews{
@@ -548,7 +727,7 @@ p.abouthead{
 .l{
     position: relative; 
     width:60%; 
-    margin: 20px auto;
+    margin: 30px auto;
     overflow: hidden;
     border-radius: 20px; 
     box-shadow: 0 8px 24px rgba(0,0,0,0.05);
@@ -612,10 +791,12 @@ p.abouthead{
 }
 
 .r h2{
-    font-size: 30px;
+    font-size: 50px;
+    margin:10px;
 }
 
-.r p{
+.r li{
+    font-size:20px;
     color:#554E4E;
 }
 
@@ -634,6 +815,11 @@ p.abouthead{
     align-items: center;
     padding:20px;
     margin:0;
+}
+
+.contact h2{
+    font-size: 30px;
+    margin:10px;
 }
 
 #socials{
