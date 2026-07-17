@@ -13,12 +13,29 @@ const categories = document.querySelector("#categories");
 const filters = document.querySelector("#filters");
 const container = document.querySelector(".container");
 
+const All = document.querySelector("#All");
+const Appetizers = document.querySelector("#Appetizers");
+const Pizza = document.querySelector("#Pizza");
+const Burgers = document.querySelector("#Burgers");
+const Pasta = document.querySelector("#Pasta");
+const Noodles = document.querySelector("#Noodles");
+const Rice_Biryani = document.querySelector("#Rice_Biryani");
+const North_Indian = document.querySelector("#North_Indian");
+const South_Indian = document.querySelector("#South_Indian");
+const Salads = document.querySelector("#Salads");
+const Desserts = document.querySelector("#Desserts");
+const Beverages = document.querySelector("#Beverages");
+
+let displayCategories = "All";
+let categorieslist = ["All","Appetizers","Pizza","Burgers","Pasta","Noodles","Rice_Biryani","North_Indian","South_Indian","Salads","Desserts","Beverages"]
+
 const fooditems = [
     //  APPETIZERS
 
 {
     name: "Cheese Rolls",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 229,
     rating: 4.4,
     bestSeller: true,
@@ -28,6 +45,7 @@ const fooditems = [
 {
     name: "Chilli Potatoes",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 199,
     rating: 4.5,
     bestSeller: false,
@@ -37,6 +55,7 @@ const fooditems = [
 {
     name: "Crispy Corn",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 239,
     rating: 4.8,
     bestSeller: true,
@@ -46,6 +65,7 @@ const fooditems = [
 {
     name: "Momos",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 189,
     rating: 4.7,
     bestSeller: false,
@@ -55,6 +75,7 @@ const fooditems = [
 {
     name: "Paneer Tikka",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 329,
     rating: 4.9,
     bestSeller: false,
@@ -64,6 +85,7 @@ const fooditems = [
 {
     name: "Spring Roll",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 219,
     rating: 4.6,
     bestSeller: false,
@@ -73,6 +95,7 @@ const fooditems = [
 {
     name: "Stuffed Mushroom Caps",
     category: "Appetizers",
+    cat: "Appetizers",
     price: 299,
     rating: 4.4,
     bestSeller: false,
@@ -85,6 +108,7 @@ const fooditems = [
 {
     name: "Cold Coffee",
     category: "Beverages",
+    cat: "Beverages",
     price: 189,
     rating: 4.9,
     bestSeller: true,
@@ -94,6 +118,7 @@ const fooditems = [
 {
     name: "Hot Chocolate",
     category: "Beverages",
+    cat: "Beverages",
     price: 219,
     rating: 4.8,
     bestSeller: false,
@@ -103,6 +128,7 @@ const fooditems = [
 {
     name: "Iced Tea",
     category: "Beverages",
+    cat: "Beverages",
     price: 169,
     rating: 4.5,
     bestSeller: false,
@@ -112,6 +138,7 @@ const fooditems = [
 {
     name: "Kulhad Masala Chai",
     category: "Beverages",
+    cat: "Beverages",
     price: 99,
     rating: 4.8,
     bestSeller: true,
@@ -121,6 +148,7 @@ const fooditems = [
 {
     name: "Mango Smoothie",
     category: "Beverages",
+    cat: "Beverages",
     price: 229,
     rating: 4.7,
     bestSeller: false,
@@ -130,6 +158,7 @@ const fooditems = [
 {
     name: "Virgin Mojito",
     category: "Beverages",
+    cat: "Beverages",
     price: 199,
     rating: 4.8,
     bestSeller: false,
@@ -139,6 +168,7 @@ const fooditems = [
 {
     name: "Watermelon Cooler",
     category: "Beverages",
+    cat: "Beverages",
     price: 189,
     rating: 4.6,
     bestSeller: false,
@@ -151,6 +181,7 @@ const fooditems = [
 {
     name: "Cheese Burst Burger",
     category: "Burgers",
+    cat: "Burgers",
     price: 269,
     rating: 4.8,
     bestSeller: false,
@@ -160,6 +191,7 @@ const fooditems = [
 {
     name: "Classic Veg Burger",
     category: "Burgers",
+    cat: "Burgers",
     price: 199,
     rating: 4.5,
     bestSeller: false,
@@ -169,6 +201,7 @@ const fooditems = [
 {
     name: "Mushroom Veg Burger",
     category: "Burgers",
+    cat: "Burgers",
     price: 249,
     rating: 4.6,
     bestSeller: false,
@@ -178,6 +211,7 @@ const fooditems = [
 {
     name: "Paneer Tikka Burger",
     category: "Burgers",
+    cat: "Burgers",
     price: 289,
     rating: 4.9,
     bestSeller: true,
@@ -187,6 +221,7 @@ const fooditems = [
 {
     name: "Peri Peri Veg Burger",
     category: "Burgers",
+    cat: "Burgers",
     price: 259,
     rating: 4.7,
     bestSeller: false,
@@ -199,6 +234,7 @@ const fooditems = [
 {
     name: "Cheesecake",
     category: "Desserts",
+    cat: "Desserts",
     price: 279,
     rating: 4.8,
     bestSeller: false,
@@ -208,6 +244,7 @@ const fooditems = [
 {
     name: "Choco Lava Cake",
     category: "Desserts",
+    cat: "Desserts",
     price: 229,
     rating: 4.9,
     bestSeller: true,
@@ -217,6 +254,7 @@ const fooditems = [
 {
     name: "Chocolate Brownie",
     category: "Desserts",
+    cat: "Desserts",
     price: 249,
     rating: 4.8,
     bestSeller: false,
@@ -226,6 +264,7 @@ const fooditems = [
 {
     name: "Cookies & Cream Ice Cream",
     category: "Desserts",
+    cat: "Desserts",
     price: 189,
     rating: 4.5,
     bestSeller: false,
@@ -235,6 +274,7 @@ const fooditems = [
 {
     name: "Gulab Jamun",
     category: "Desserts",
+    cat: "Desserts",
     price: 149,
     rating: 4.7,
     bestSeller: false,
@@ -244,6 +284,7 @@ const fooditems = [
 {
     name: "Jalebi",
     category: "Desserts",
+    cat: "Desserts",
     price: 169,
     rating: 4.6,
     bestSeller: false,
@@ -253,6 +294,7 @@ const fooditems = [
 {
     name: "Kheer",
     category: "Desserts",
+    cat: "Desserts",
     price: 179,
     rating: 4.4,
     bestSeller: true,
@@ -262,6 +304,7 @@ const fooditems = [
 {
     name: "Red Velvet Pastry",
     category: "Desserts",
+    cat: "Desserts",
     price: 239,
     rating: 4.7,
     bestSeller: false,
@@ -274,6 +317,7 @@ const fooditems = [
 {
     name: "Chilli Garlic Noodles",
     category: "Noodles",
+    cat: "Noodles",
     price: 259,
     rating: 4.7,
     bestSeller: false,
@@ -283,6 +327,7 @@ const fooditems = [
 {
     name: "Hakka Noodles",
     category: "Noodles",
+    cat: "Noodles",
     price: 239,
     rating: 4.9,
     bestSeller: false,
@@ -292,6 +337,7 @@ const fooditems = [
 {
     name: "Paneer Chilli Noodles",
     category: "Noodles",
+    cat: "Noodles",
     price: 289,
     rating: 4.8,
     bestSeller: true,
@@ -301,6 +347,7 @@ const fooditems = [
 {
     name: "Schezwan Noodles",
     category: "Noodles",
+    cat: "Noodles",
     price: 269,
     rating: 4.8,
     bestSeller: false,
@@ -310,6 +357,7 @@ const fooditems = [
 {
     name: "Veg Chow Mein",
     category: "Noodles",
+    cat: "Noodles",
     price: 249,
     rating: 4.6,
     bestSeller: false,
@@ -322,6 +370,7 @@ const fooditems = [
 {
     name: "Aaloo Paratha",
     category: "North Indian",
+    cat: "North_Indian",
     price: 169,
     rating: 4.6,
     bestSeller: false,
@@ -331,6 +380,7 @@ const fooditems = [
 {
     name: "Butter Paneer Masala",
     category: "North Indian",
+    cat: "North_Indian",
     price: 329,
     rating: 4.9,
     bestSeller: true,
@@ -340,6 +390,7 @@ const fooditems = [
 {
     name: "Dal Makhani",
     category: "North Indian",
+    cat: "North_Indian",
     price: 289,
     rating: 4.8,
     bestSeller: false,
@@ -349,6 +400,7 @@ const fooditems = [
 {
     name: "Dal Tadka",
     category: "North Indian",
+    cat: "North_Indian",
     price: 249,
     rating: 4.5,
     bestSeller: false,
@@ -358,6 +410,7 @@ const fooditems = [
 {
     name: "Dum Aaloo",
     category: "North Indian",
+    cat: "North_Indian",
     price: 279,
     rating: 4.7,
     bestSeller: true,
@@ -367,6 +420,7 @@ const fooditems = [
 {
     name: "Garlic Naan",
     category: "North Indian",
+    cat: "North_Indian",
     price: 99,
     rating: 4.8,
     bestSeller: true,
@@ -379,6 +433,7 @@ const fooditems = [
 {
     name: "Arrabbiata Pasta",
     category: "Pasta",
+    cat: "Pasta",
     price: 299,
     rating: 4.7,
     bestSeller: true,
@@ -388,6 +443,7 @@ const fooditems = [
 {
     name: "Classic Red Sauce Pasta",
     category: "Pasta",
+    cat: "Pasta",
     price: 289,
     rating: 4.6,
     bestSeller: false,
@@ -397,6 +453,7 @@ const fooditems = [
 {
     name: "Creamy Alfredo Pasta",
     category: "Pasta",
+    cat: "Pasta",
     price: 339,
     rating: 4.5,
     bestSeller: false,
@@ -406,6 +463,7 @@ const fooditems = [
 {
     name: "Mac & Cheese Pasta",
     category: "Pasta",
+    cat: "Pasta",
     price: 329,
     rating: 4.8,
     bestSeller: false,
@@ -415,6 +473,7 @@ const fooditems = [
 {
     name: "Roasted Veggie Pasta",
     category: "Pasta",
+    cat: "Pasta",
     price: 319,
     rating: 4.7,
     bestSeller: false,
@@ -427,6 +486,7 @@ const fooditems = [
 {
     name: "Corn & Cheese Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 349,
     rating: 4.7,
     bestSeller: false,
@@ -436,6 +496,7 @@ const fooditems = [
 {
     name: "Margherita Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 299,
     rating: 5.0,
     bestSeller: true,
@@ -445,6 +506,7 @@ const fooditems = [
 {
     name: "Mushroom Delight Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 389,
     rating: 4.8,
     bestSeller: false,
@@ -454,6 +516,7 @@ const fooditems = [
 {
     name: "Paneer Tikka Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 419,
     rating: 4.9,
     bestSeller: false,
@@ -463,6 +526,7 @@ const fooditems = [
 {
     name: "Peri Peri Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 399,
     rating: 4.8,
     bestSeller: false,
@@ -472,6 +536,7 @@ const fooditems = [
 {
     name: "Veggie Supreme Pizza",
     category: "Pizza",
+    cat: "Pizza",
     price: 439,
     rating: 4.9,
     bestSeller: false,
@@ -484,6 +549,7 @@ const fooditems = [
 {
     name: "Jeera Rice",
     category: "Rice & Biryani",
+    cat: "Rice_Biryani",
     price: 189,
     rating: 4.5,
     bestSeller: false,
@@ -493,6 +559,7 @@ const fooditems = [
 {
     name: "Paneer Biryani",
     category: "Rice & Biryani",
+    cat: "Rice_Biryani",
     price: 339,
     rating: 4.9,
     bestSeller: true,
@@ -502,6 +569,7 @@ const fooditems = [
 {
     name: "Schezwan Fried Rice",
     category: "Rice & Biryani",
+    cat: "Rice_Biryani",
     price: 269,
     rating: 4.8,
     bestSeller: false,
@@ -511,6 +579,7 @@ const fooditems = [
 {
     name: "Veg Biryani",
     category: "Rice & Biryani",
+    cat: "Rice_Biryani",
     price: 289,
     rating: 4.7,
     bestSeller: false,
@@ -520,6 +589,7 @@ const fooditems = [
 {
     name: "Veg Pulao",
     category: "Rice & Biryani",
+    cat: "Rice_Biryani",
     price: 239,
     rating: 4.6,
     bestSeller: false,
@@ -532,6 +602,7 @@ const fooditems = [
 {
     name: "Classic House Salad",
     category: "Salads",
+    cat: "Salads",
     price: 179,
     rating: 4.5,
     bestSeller: false,
@@ -541,6 +612,7 @@ const fooditems = [
 {
     name: "Fresh Green Salad",
     category: "Salads",
+    cat: "Salads",
     price: 249,
     rating: 4.8,
     bestSeller: true,
@@ -550,6 +622,7 @@ const fooditems = [
 {
     name: "Rainbow Salad",
     category: "Salads",
+    cat: "Salads",
     price: 229,
     rating: 4.7,
     bestSeller: false,
@@ -562,6 +635,7 @@ const fooditems = [
 {
     name: "Cheese Masala Dosa",
     category: "South Indian",
+    cat: "South_Indian",
     price: 259,
     rating: 4.8,
     bestSeller: false,
@@ -571,6 +645,7 @@ const fooditems = [
 {
     name: "Idli Sambar",
     category: "South Indian",
+    cat: "South_Indian",
     price: 169,
     rating: 4.6,
     bestSeller: false,
@@ -580,6 +655,7 @@ const fooditems = [
 {
     name: "Masala Dosa",
     category: "South Indian",
+    cat: "South_Indian",
     price: 219,
     rating: 4.9,
     bestSeller: true,
@@ -589,6 +665,7 @@ const fooditems = [
 {
     name: "Podi Idli",
     category: "South Indian",
+    cat: "South_Indian",
     price: 199,
     rating: 4.7,
     bestSeller: false,
@@ -598,6 +675,7 @@ const fooditems = [
 {
     name: "Uttapam",
     category: "South Indian",
+    cat: "South_Indian",
     price: 229,
     rating: 4.8,
     bestSeller: false,
@@ -660,13 +738,47 @@ document.addEventListener('click', function (e) {
                                     hideSuggestions();}
 });
 
-for (let i of fooditems){
-    container.innerHTML+= `<div class="foodcard">
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+let food = [];
+
+for (let id of categorieslist){
+    card=document.getElementById(id);
+
+    card.addEventListener('click', function(){
+                                    displayCategories=id;
+    })
+}
+
+if (displayCategories=="All"){
+    food=[...fooditems]
+}
+else{
+    food=fooditems.filter(item=>item.cat=="displayCategories")
+}
+
+let html="";
+
+for (let i of shuffle(food)){
+    console.log(i.name, i.bestSeller);
+    html+= `<div class="foodcard">
                            <img src="images/${i.category}/${i.name.toLowerCase()}.jpg" alt=${i.name}>
                            <div class="foodoptions">
                            <div><i style="color:red" class="bi bi-heart"></i></div>
                            <div><i style="color:rgb(116, 113, 113)" class="bi bi-cart"></i></div>
                            </div>
+                           ${i.bestSeller ? `<div class="bestsellertag">
+                                             <i style="color:rgb(243, 190, 19)" class="fa-solid fa-award"></i>
+                                            </div>`
+                                            : ""
+                            }
                            <div class="foodname">
                            <div class="name">${i.name}</div>
                            <div class="rating">${i.rating}<i class="fa-solid fa-star"></i></div>
@@ -676,6 +788,10 @@ for (let i of fooditems){
                            <div class="price">₹${i.price}</div>
                            </div>
                            <div class="foodtime">${i.time} min</div>
-                           `
+            </div>
+                           `;
 }
+
+container.innerHTML+=html;
+
 

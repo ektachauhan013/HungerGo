@@ -435,6 +435,23 @@ p.menuhead{
     align-items: center;
 }
 
+.bestsellertag{
+    position:absolute;
+    top:20px;
+    left:20px;
+    font-size: 40px;
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+    border-radius: 20px;
+}
+
 .foodname,.fooddesc{
     width:100%;
     display:flex;
