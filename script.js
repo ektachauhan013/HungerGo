@@ -34,10 +34,34 @@ const clearfilter = document.querySelector(".clearfilters");
 
 const reviewcardscontainer = document.querySelector("#reviewcardscontainer");
 
+const overlay = document.querySelector("#overlay");
+const cartIcon = document.querySelector("#cartIcon");
+const wishlistIcon = document.querySelector("#wishlistIcon");
+const profileIcon = document.querySelector("#profileIcon");
+const cartDrawer = document.querySelector("#cartDrawer");
+const wishlistDrawer = document.querySelector("#wishlistDrawer");
+const profileDrawer = document.querySelector("#profileDrawer");
+
+const cartItemsEl = document.querySelector("#cartItems");
+const emptycart = document.querySelector("#emptycart");
+const cartTotalEl = document.querySelector("#cartTotal");
+const cartcountSpan = document.querySelector("#cartcount");
+const cartcountNavSpan = document.querySelector("#cartcountnav");
+
+const wishlistItemsEl = document.querySelector("#wishlistItems");
+const emptywishlist = document.querySelector("#emptywishlist");
+const wishlistcountSpan = document.querySelector("#wishlistcount");
+const wishlistcountNavSpan = document.querySelector("#wishlistcountnav");
+
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
 let displayCategories = "All";
 let categorieslist = ["All","Appetizers","Pizza","Burgers","Pasta","Noodles","Rice_Biryani","North_Indian","South_Indian","Salads","Desserts","Beverages"]
 
 const fooditems = [
+
     //  APPETIZERS
 
 {
@@ -422,7 +446,7 @@ const fooditems = [
     price: 279,
     rating: 4.7,
     bestSeller: true,
-    image: "imagesNorth Indian/dum aaloo.jpg",
+    image: "images/North Indian/dum aaloo.jpg",
     time:45
 },
 {
@@ -528,7 +552,7 @@ const fooditems = [
     price: 419,
     rating: 4.9,
     bestSeller: false,
-    image: "imagesPizza/paneer tikka pizza.jpg",
+    image: "images/Pizza/paneer tikka pizza.jpg",
     time:40
 },
 {
@@ -744,7 +768,6 @@ reserveButton.addEventListener('click',function(){
 
 viewMenuButton.addEventListener('click',function(){
                                              menuSection.scrollIntoView()
-
                                         });
                       
 
@@ -771,7 +794,7 @@ searchbar.addEventListener('input', function(){
                                         return;
                                     }
                                     let suggestionarray = fooditems.filter((item)=>
-                                                        item.name.toLowerCase().includes(searchText).slice(0,5));
+                                                        item.name.toLowerCase().includes(searchText)).slice(0,5);
 
                                     if (suggestionarray.length===0){
                                         hideSuggestions();
@@ -801,30 +824,18 @@ function shuffle(arr) {
     return arr;
 }
 
-let food = [];
+function renderFood(){
 
-for (let id of categorieslist){
-    card=document.getElementById(id);
+    let food = [];
 
-    card.addEventListener('click', function(){
-                                    displayCategories=id;
-    })
-}
+    if (displayCategories=="All"){
+        food=[...fooditems];
+    }
+    else{
+        food=fooditems.filter(item=>item.cat==displayCategories);
+    }
 
-// displayCategories.style.boxShadow="0px 2px 10px 0px rgb(78, 76, 76)";
-
-if (displayCategories=="All"){
-    food=[...fooditems]
-}
-else{
-    food=fooditems.filter(item=>item.cat=="displayCategories")
-}
-
-let finalcards = [];
-
-applyfilter.addEventListener("click", () => {
-
-    finalcards = food.filter((food) => {
+    let finalcards = food.filter((food) => {
 
         let ratingMatch = true;
         let priceMatch = true;
@@ -836,158 +847,288 @@ applyfilter.addEventListener("click", () => {
         }
 
         if(priceFilter.value !== "All Prices") {
-
             if(priceFilter.value === "₹0 - ₹199") {
                 priceMatch = food.price <= 199;
             }
-
             else if(priceFilter.value === "₹200 - ₹299") {
                 priceMatch = food.price >= 200 && food.price <= 299;
             }
-
             else if(priceFilter.value === "₹300 - ₹399") {
                 priceMatch = food.price >= 300 && food.price <= 399;
             }
-
             else if(priceFilter.value === "₹400+") {
                 priceMatch = food.price >= 400;
             }
         }
 
         if(bestsellerFilter.value !== "All Items") {
-
             if(bestsellerFilter.value === "Best Sellers") {
-                bestsellerMatch = food.bestseller === true;
+                bestsellerMatch = food.bestSeller === true;
             }
-
             else if(bestsellerFilter.value === "Regular Items") {
-                bestsellerMatch = food.bestseller === false;
+                bestsellerMatch = food.bestSeller === false;
             }
         }
 
         return ratingMatch && priceMatch && bestsellerMatch;
     });
+
+    let html="";
+
+    for (let i of shuffle(finalcards)){
+        html+= `<div class="foodcard" data-name="${i.name}">
+                        <img src="${i.image}" alt="${i.name}">
+                        <div class="foodoptions">
+                            <div class="wishbtn"><i style="color:red" class="bi bi-heart"></i></div>
+                            <div class="cartbtn"><i style="color:rgb(116, 113, 113)" class="bi bi-cart"></i></div>
+                        </div>
+                        ${i.bestSeller ? `<div class="bestsellertag">
+                                          <i style="color:rgb(243, 190, 19)" class="fa-solid fa-award"></i>
+                                          </div>`
+                                          : ""
+                        }
+                        <div class="foodname">
+                            <div class="name">${i.name}</div>
+                            <div class="rating">${i.rating}<i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <div class="fooddesc">
+                            <div class="category ">${i.category}</div>
+                            <div class="price">₹${i.price}</div>
+                        </div>
+                        <div class="foodtime">${i.time} min</div>
+                </div>
+                               `;
+    }
+
+    container.innerHTML = html; 
+}
+
+container.addEventListener('click', function(e){
+    const card = e.target.closest(".foodcard");
+    if (!card) return;
+    const name = card.dataset.name;
+    if (e.target.closest(".wishbtn")) toggleWishlist(name);
+    else if (e.target.closest(".cartbtn")) addToCart(name);
 });
 
-clearfilter.addEventListener("click", () => {
+for (let id of categorieslist){
+    let card = document.getElementById(id); 
 
+    card.addEventListener('click', function(){
+        displayCategories = id;
+        document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
+        card.classList.add("activecategory");
+        renderFood();
+    });
+}
+
+applyfilter.addEventListener("click", renderFood);
+
+clearfilter.addEventListener("click", () => {
     ratingFilter.value = "All Ratings";
     priceFilter.value = "All Prices";
     bestsellerFilter.value = "All Items";
-
-    finalcards = food;
-
+    displayCategories = "All";
+    document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
+    All.classList.add("activecategory");
+    renderFood();
 });
 
-let html="";
+renderFood();  
 
-for (let i of shuffle(finalcards)){
-    console.log(i.name, i.bestSeller);
-    html+= `<div class="foodcard">
-                           <img src="images/${i.category}/${i.name.toLowerCase()}.jpg" alt=${i.name}>
-                           <div class="foodoptions">
-                           <div><i style="color:red" class="bi bi-heart"></i></div>
-                           <div><i style="color:rgb(116, 113, 113)" class="bi bi-cart"></i></div>
-                           </div>
-                           ${i.bestSeller ? `<div class="bestsellertag">
-                                             <i style="color:rgb(243, 190, 19)" class="fa-solid fa-award"></i>
-                                            </div>`
-                                            : ""
-                            }
-                           <div class="foodname">
-                           <div class="name">${i.name}</div>
-                           <div class="rating">${i.rating}<i class="fa-solid fa-star"></i></div>
-                           </div>
-                           <div class="fooddesc">
-                           <div class="category ">${i.category}</div>
-                           <div class="price">₹${i.price}</div>
-                           </div>
-                           <div class="foodtime">${i.time} min</div>
-            </div>
-                           `;
-}
-
-container.innerHTML+=html;
+let currentIndex = 0;
 
 function displayreviews(start){
-    currentreviews=reviews.slice(start,start+3);
-    reviewshtml=""
-    
+    let currentreviews = reviews.slice(start, start+3);
+    let reviewshtml = "";
+
     for (let i of currentreviews){
-    reviewshtml+=`<div class="reviewscard>
-                    <div class="details">
-                        <div class="ratings">${i.rating}<i style="color:gold" class="fa-solid fa-star"></i></div>
-                        <div class="time">${i.date}</div>
-                    </div>
-                    <div>${i.review}</div>
-                    <div class="orderedfood"> ${i.orderedItem} </div>
-                  </div>`
+        reviewshtml += `<div class="reviewscard">
+                            <div class="details">
+                                <div class="ratings">${i.rating}<i style="color:gold" class="fa-solid fa-star"></i></div>
+                                <div class="time">${i.date}</div>
+                            </div>
+                            <div>${i.review}</div>
+                            <div class="orderedfood">Ordered food : ${i.orderedItem}</div>
+                        </div>`;
     }
-    reviewcardscontainer.innerHTML+=reviewshtml;
+    reviewcardscontainer.innerHTML = reviewshtml;
 }
+
 displayreviews(0);
 
 function changeReviews(){
-
-    wrapper.classList.add("slide-left");
-
+    reviewcardscontainer.classList.add("slide-out");
+    setTimeout(() => {
+        currentIndex += 3;
+        if (currentIndex >= reviews.length) currentIndex = 0;
+        displayreviews(currentIndex);
+        reviewcardscontainer.classList.remove("slide-out");
+    }, 400);
 }
 
-wrapper.addEventListener("transitionend",()=>{
+let reviewInterval = setInterval(changeReviews, 10000);
 
-    if(!wrapper.classList.contains("slide-left"))
-        return;
+reviewcardscontainer.addEventListener("mouseenter", ()=>{
+    clearInterval(reviewInterval);
+});
 
-    wrapper.classList.remove("slide-left");
+reviewcardscontainer.addEventListener("mouseleave", ()=>{
+    reviewInterval = setInterval(changeReviews, 10000);
+});
 
-    currentIndex+=3;
+let cart = JSON.parse(localStorage.getItem("hg_cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("hg_wishlist")) || [];
 
-    if(currentIndex>=reviews.length){
+function saveCart(){ localStorage.setItem("hg_cart", JSON.stringify(cart)); }
+function saveWishlist(){ localStorage.setItem("hg_wishlist", JSON.stringify(wishlist)); }
 
-        currentIndex=0;
+function updateCounts(){
+    const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    cartcountSpan.textContent = cartCount;
+    cartcountNavSpan.textContent = cartCount;
+    wishlistcountSpan.textContent = wishlist.length;
+    wishlistcountNavSpan.textContent = wishlist.length;
+}
 
+function renderCart(){
+    if (cart.length === 0){
+        cartItemsEl.innerHTML = "";
+        cartTotalEl.innerHTML = "";
+        emptycart.style.display = "block";
+    } else {
+        emptycart.style.display = "none";
+        let total = 0, html = "";
+        for (const item of cart){
+            total += item.price * item.qty;
+            html += `<div class="cartitem" data-name="${item.name}">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cartitem-details">
+                            <div class="cartitem-name">${item.name}</div>
+                            <div class="cartitem-price">₹${item.price}</div>
+                            <div class="qtycontrol">
+                                <button class="qtyminus">−</button>
+                                <span>${item.qty}</span>
+                                <button class="qtyplus">+</button>
+                            </div>
+                        </div>
+                        <button class="removeitem"><i class="fa-solid fa-trash"></i></button>
+                     </div>`;
+        }
+        cartItemsEl.innerHTML = html;
+        cartTotalEl.innerHTML = `<div class="carttotalrow"><span>Total</span><span>₹${total}</span></div>
+                                  <button class="checkoutbtn">Proceed to Checkout</button>`;
     }
+    updateCounts();
+}
 
-    displayReviews(currentIndex);
+function renderWishlist(){
+    if (wishlist.length === 0){
+        wishlistItemsEl.innerHTML = "";
+        emptywishlist.style.display = "block";
+    } else {
+        emptywishlist.style.display = "none";
+        let html = "";
+        for (const item of wishlist){
+            html += `<div class="wishlistitem" data-name="${item.name}">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="wishlistitem-details">
+                            <div class="wishlistitem-name">${item.name}</div>
+                            <div class="wishlistitem-price">₹${item.price}</div>
+                        </div>
+                        <button class="addtocartfromwishlist"><i class="fa-solid fa-cart-plus"></i></button>
+                        <button class="removeitem"><i class="fa-solid fa-trash"></i></button>
+                     </div>`;
+        }
+        wishlistItemsEl.innerHTML = html;
+    }
+    updateCounts();
+}
 
-    wrapper.classList.add("slide-right");
+function addToCart(name){
+    const fooditem = fooditems.find(f => f.name === name);
+    if (!fooditem) return;
+    const existing = cart.find(c => c.name === name);
+    if (existing) existing.qty++;
+    else cart.push({ name: fooditem.name, price: fooditem.price, image: fooditem.image, qty: 1 });
+    saveCart();
+    renderCart();
+}
 
-    requestAnimationFrame(()=>{
+function removeFromCart(name){
+    cart = cart.filter(c => c.name !== name);
+    saveCart();
+    renderCart();
+}
 
-        requestAnimationFrame(()=>{
+function toggleWishlist(name){
+    const fooditem = fooditems.find(f => f.name === name);
+    if (!fooditem) return;
+    const idx = wishlist.findIndex(w => w.name === name);
+    if (idx > -1) wishlist.splice(idx, 1);
+    else wishlist.push({ name: fooditem.name, price: fooditem.price, image: fooditem.image });
+    saveWishlist();
+    renderWishlist();
+}
 
-            wrapper.classList.remove("slide-right");
+// drawer open/close
+function openDrawer(drawer){
+    document.querySelectorAll(".sidedrawer").forEach(d => d.classList.remove("open"));
+    drawer.classList.add("open");
+    overlay.classList.add("show");
+}
+function closeDrawers(){
+    document.querySelectorAll(".sidedrawer").forEach(d => d.classList.remove("open"));
+    overlay.classList.remove("show");
+}
 
-            wrapper.classList.add("slide-center");
+cartIcon.addEventListener('click', () => openDrawer(cartDrawer));
+wishlistIcon.addEventListener('click', () => openDrawer(wishlistDrawer));
+profileIcon.addEventListener('click', () => openDrawer(profileDrawer));
+overlay.addEventListener('click', closeDrawers);
+document.querySelectorAll(".closedrawer").forEach(btn => btn.addEventListener('click', closeDrawers));
+document.querySelectorAll(".exploremenu").forEach(btn => btn.addEventListener('click', () => {
+    closeDrawers();
+    menuSection.scrollIntoView();
+}));
 
-        });
-
-    });
-
+cartItemsEl.addEventListener('click', function(e){
+    const itemEl = e.target.closest(".cartitem");
+    if (!itemEl) return;
+    const name = itemEl.dataset.name;
+    if (e.target.closest(".qtyplus")){
+        const it = cart.find(c => c.name === name);
+        it.qty++;
+        saveCart(); renderCart();
+    } else if (e.target.closest(".qtyminus")){
+        const it = cart.find(c => c.name === name);
+        it.qty--;
+        if (it.qty <= 0) cart = cart.filter(c => c.name !== name);
+        saveCart(); renderCart();
+    } else if (e.target.closest(".removeitem")){
+        removeFromCart(name);
+    }
 });
 
-wrapper.addEventListener("transitionend",()=>{
-
-    wrapper.classList.remove("slide-center");
-
+wishlistItemsEl.addEventListener('click', function(e){
+    const itemEl = e.target.closest(".wishlistitem");
+    if (!itemEl) return;
+    const name = itemEl.dataset.name;
+    if (e.target.closest(".addtocartfromwishlist")) addToCart(name);
+    else if (e.target.closest(".removeitem")) toggleWishlist(name);
 });
 
-wrapper.addEventListener("transitionend",()=>{
+let slideIndex = 0;
 
-    wrapper.classList.remove("slide-center");
+function showSlide(index){
+    slides.forEach(s => s.classList.remove("active"));
+    slideIndex = (index + slides.length) % slides.length;   // wraps around both directions
+    slides[slideIndex].classList.add("active");
+}
 
-});
+prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
+nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
 
-let interval=setInterval(changeReviews,10000);
-
-wrapper.addEventListener("mouseenter",()=>{
-
-    clearInterval(interval);
-
-});
-
-wrapper.addEventListener("mouseleave",()=>{
-
-    interval=setInterval(changeReviews,10000);
-
-});
+// initial render — call once near the bottom of your script
+renderCart();
+renderWishlist();

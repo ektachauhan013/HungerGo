@@ -28,9 +28,9 @@
                 <div><a class="links" href="#reviews">Reviews</a></div>
                 <div><a class="links" href="#about">About</a></div>
                 
-                <div><i style="color: rgb(37, 154, 250)" class="fa-solid fa-circle-user"></i></div>
-                <div><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist">0</span></div>
-                <div><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart">0</span> </div>
+                <div id="profileicon"><i style="color: rgb(37, 154, 250)" class="fa-solid fa-circle-user"></i></div>
+                <div id="wishlisticon"><i style="color:red" class="fa-solid fa-heart"></i> <span id="wishlist">0</span></div>
+                <div id="carticon"><i style="color:rgb(116, 113, 113)" class="fa-solid fa-cart-shopping"></i> <span id="cart">0</span> </div>
                 <div><i style="color:goldenrod" id="toggle" class="fa-solid fa-sun"></i></div>
             </div>
 
@@ -38,8 +38,54 @@
     </header>
 
 
+    <div id="overlay"></div>
     <div id="drawer">
-        
+        <div id="cartDrawer" class="sidedrawer">
+            <button class="closedrawer"><i class="fa-solid fa-xmark"></i></button>
+            <h1><i class="fa-solid fa-cart-shopping"></i> MY CART</h1>
+            <h3><span id="cartcount">0</span> Items</h3>
+            <div id="cartItems"></div>
+            <div id="emptycart">
+                <p>Ready when your cravings are.</p>
+                <p>Your cart is empty.</p>
+                <p>Explore the menu and start ordering your favorite dishes.</p>
+            </div>
+            <div id="cartTotal"></div>
+            <button class="exploremenu">Explore Menu</button>
+        </div>
+
+        <div id="wishlistDrawer" class="sidedrawer">
+            <button class="closedrawer"><i class="fa-solid fa-xmark"></i></button>
+            <h1><i style="color:red" class="fa-solid fa-heart"></i> MY WISHLIST</h1>
+            <h3><span id="wishlistcount">0</span> Saved Items</h3>
+            <div id="wishlistItems"></div>
+            <div id="emptywishlist">
+                <p>Good choices are worth saving.</p>
+                <p>Looks like your wishlist is empty.</p>
+                <p>Explore the menu and save the dishes you'd love to order again.</p>
+            </div>
+            <button class="exploremenu">Explore Menu</button>
+        </div>
+
+        <div id="profileDrawer" class="sidedrawer">
+            <button class="closedrawer"><i class="fa-solid fa-xmark"></i></button>
+            <h1><i class="fa-solid fa-user-check"></i> EKTA CHAUHAN</h1>
+            <div class="profileinfo">
+                <h2>Personal Information</h2>
+                <div>
+                    <p><span>Email : </span>ekta@example.com</p>
+                    <p><span>Phone : </span>+91 XXXXX XXXXX</p>
+                </div>
+                <div>
+                    <h2>Saved Address</h2>
+                    <p>New Delhi</p>
+                </div>
+            </div>
+            <div class="profilebtns">
+                <button><i class="fa-regular fa-pen-to-square"></i> Edit Profile</button>
+                <button><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            </div>
+        </div>
     </div>
 
     <section id="home">
@@ -221,10 +267,8 @@
                         </div>
                         
                         <div>
-                            <label for="date">Date</i></label>
-                            <select id="date" required>
-                                <option selected disabled>Select Date</option>
-                            </select>
+                            <label for="date">Date</label>
+                            <input id="date" type="date" required>
                         </div>
                         
                         <div>
