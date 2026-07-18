@@ -26,6 +26,14 @@ const Salads = document.querySelector("#Salads");
 const Desserts = document.querySelector("#Desserts");
 const Beverages = document.querySelector("#Beverages");
 
+const ratingFilter = document.querySelector("#rating");
+const priceFilter = document.querySelector("#prices");
+const bestsellerFilter = document.querySelector("#bestseller");
+const applyfilter = document.querySelector(".applyfilters");
+const clearfilter = document.querySelector(".clearfilters");
+
+const reviewcardscontainer = document.querySelector("#reviewcardscontainer");
+
 let displayCategories = "All";
 let categorieslist = ["All","Appetizers","Pizza","Burgers","Pasta","Noodles","Rice_Biryani","North_Indian","South_Indian","Salads","Desserts","Beverages"]
 
@@ -36,7 +44,7 @@ const fooditems = [
     name: "Cheese Rolls",
     category: "Appetizers",
     cat: "Appetizers",
-    price: 229,
+    price: 249,
     rating: 4.4,
     bestSeller: true,
     image: "images/Appetizers/cheese rolls.jpg",
@@ -56,7 +64,7 @@ const fooditems = [
     name: "Crispy Corn",
     category: "Appetizers",
     cat: "Appetizers",
-    price: 239,
+    price: 229,
     rating: 4.8,
     bestSeller: true,
     image: "images/Appetizers/crispy corn.jpg",
@@ -86,7 +94,7 @@ const fooditems = [
     name: "Spring Roll",
     category: "Appetizers",
     cat: "Appetizers",
-    price: 219,
+    price: 269,
     rating: 4.6,
     bestSeller: false,
     image: "images/Appetizers/spring roll.jpg",
@@ -96,7 +104,7 @@ const fooditems = [
     name: "Stuffed Mushroom Caps",
     category: "Appetizers",
     cat: "Appetizers",
-    price: 299,
+    price: 399,
     rating: 4.4,
     bestSeller: false,
     image: "images/Appetizers/stuffed mushroom caps.jpg",
@@ -109,7 +117,7 @@ const fooditems = [
     name: "Cold Coffee",
     category: "Beverages",
     cat: "Beverages",
-    price: 189,
+    price: 229,
     rating: 4.9,
     bestSeller: true,
     image: "images/Beverages/cold coffee.jpg",
@@ -119,7 +127,7 @@ const fooditems = [
     name: "Hot Chocolate",
     category: "Beverages",
     cat: "Beverages",
-    price: 219,
+    price: 319,
     rating: 4.8,
     bestSeller: false,
     image: "images/Beverages/hot chocolate.jpg",
@@ -149,7 +157,7 @@ const fooditems = [
     name: "Mango Smoothie",
     category: "Beverages",
     cat: "Beverages",
-    price: 229,
+    price: 249,
     rating: 4.7,
     bestSeller: false,
     image: "images/Beverages/mango smoothie.jpg",
@@ -192,7 +200,7 @@ const fooditems = [
     name: "Classic Veg Burger",
     category: "Burgers",
     cat: "Burgers",
-    price: 199,
+    price: 169,
     rating: 4.5,
     bestSeller: false,
     image: "images/Burgers/classic veg burger.jpg",
@@ -212,7 +220,7 @@ const fooditems = [
     name: "Paneer Tikka Burger",
     category: "Burgers",
     cat: "Burgers",
-    price: 289,
+    price: 319,
     rating: 4.9,
     bestSeller: true,
     image: "images/Burgers/paneer tikka burger.jpg",
@@ -235,7 +243,7 @@ const fooditems = [
     name: "Cheesecake",
     category: "Desserts",
     cat: "Desserts",
-    price: 279,
+    price: 499,
     rating: 4.8,
     bestSeller: false,
     image: "images/Desserts/cheesecake.jpg",
@@ -245,7 +253,7 @@ const fooditems = [
     name: "Choco Lava Cake",
     category: "Desserts",
     cat: "Desserts",
-    price: 229,
+    price: 329,
     rating: 4.9,
     bestSeller: true,
     image: "images/Desserts/choco lava cake.jpg",
@@ -285,7 +293,7 @@ const fooditems = [
     name: "Jalebi",
     category: "Desserts",
     cat: "Desserts",
-    price: 169,
+    price: 249,
     rating: 4.6,
     bestSeller: false,
     image: "images/Desserts/jalebi.jpg",
@@ -295,7 +303,7 @@ const fooditems = [
     name: "Kheer",
     category: "Desserts",
     cat: "Desserts",
-    price: 179,
+    price: 299,
     rating: 4.4,
     bestSeller: true,
     image: "images/Desserts/kheer.jpg",
@@ -338,7 +346,7 @@ const fooditems = [
     name: "Paneer Chilli Noodles",
     category: "Noodles",
     cat: "Noodles",
-    price: 289,
+    price: 319,
     rating: 4.8,
     bestSeller: true,
     image: "images/Noodles/paneer chilli noodles.jpg",
@@ -358,7 +366,7 @@ const fooditems = [
     name: "Veg Chow Mein",
     category: "Noodles",
     cat: "Noodles",
-    price: 249,
+    price: 199,
     rating: 4.6,
     bestSeller: false,
     image: "images/Noodles/veg chow mein.jpg",
@@ -371,7 +379,7 @@ const fooditems = [
     name: "Aaloo Paratha",
     category: "North Indian",
     cat: "North_Indian",
-    price: 169,
+    price: 199,
     rating: 4.6,
     bestSeller: false,
     image: "images/North Indian/aaloo paratha.jpg",
@@ -381,7 +389,7 @@ const fooditems = [
     name: "Butter Paneer Masala",
     category: "North Indian",
     cat: "North_Indian",
-    price: 329,
+    price: 349,
     rating: 4.9,
     bestSeller: true,
     image: "images/North Indian/butter paneer masala.jpg",
@@ -391,7 +399,7 @@ const fooditems = [
     name: "Dal Makhani",
     category: "North Indian",
     cat: "North_Indian",
-    price: 289,
+    price: 299,
     rating: 4.8,
     bestSeller: false,
     image: "images/North Indian/dal makhani.jpg",
@@ -454,7 +462,7 @@ const fooditems = [
     name: "Creamy Alfredo Pasta",
     category: "Pasta",
     cat: "Pasta",
-    price: 339,
+    price: 329,
     rating: 4.5,
     bestSeller: false,
     image: "images/Pasta/creamy alfredo pasta.jpg",
@@ -464,7 +472,7 @@ const fooditems = [
     name: "Mac & Cheese Pasta",
     category: "Pasta",
     cat: "Pasta",
-    price: 329,
+    price: 349,
     rating: 4.8,
     bestSeller: false,
     image: "images/Pasta/mac & cheese pasta.jpg",
@@ -474,7 +482,7 @@ const fooditems = [
     name: "Roasted Veggie Pasta",
     category: "Pasta",
     cat: "Pasta",
-    price: 319,
+    price: 309,
     rating: 4.7,
     bestSeller: false,
     image: "images/Pasta/roasted veggie pasta.jpg",
@@ -507,7 +515,7 @@ const fooditems = [
     name: "Mushroom Delight Pizza",
     category: "Pizza",
     cat: "Pizza",
-    price: 389,
+    price: 399,
     rating: 4.8,
     bestSeller: false,
     image: "images/Pizza/mushroom delight pizza.jpg",
@@ -527,7 +535,7 @@ const fooditems = [
     name: "Peri Peri Pizza",
     category: "Pizza",
     cat: "Pizza",
-    price: 399,
+    price: 349,
     rating: 4.8,
     bestSeller: false,
     image: "images/Pizza/peri peri pizza.jpg",
@@ -560,7 +568,7 @@ const fooditems = [
     name: "Paneer Biryani",
     category: "Rice & Biryani",
     cat: "Rice_Biryani",
-    price: 339,
+    price: 349,
     rating: 4.9,
     bestSeller: true,
     image: "images/Rice & Biryani/paneer biryani.jpg",
@@ -623,7 +631,7 @@ const fooditems = [
     name: "Rainbow Salad",
     category: "Salads",
     cat: "Salads",
-    price: 229,
+    price: 299,
     rating: 4.7,
     bestSeller: false,
     image: "images/Salads/rainbow salad.jpg",
@@ -646,7 +654,7 @@ const fooditems = [
     name: "Idli Sambar",
     category: "South Indian",
     cat: "South_Indian",
-    price: 169,
+    price: 309,
     rating: 4.6,
     bestSeller: false,
     image: "images/South Indian/idli sambar.jpg",
@@ -683,6 +691,52 @@ const fooditems = [
     time:35
 },
 ]
+
+
+const reviews = [
+    {
+        id: 1,
+        review: "Visited HungerGo with my family and absolutely loved the ambience. The Paneer Tikka was fresh, perfectly grilled, and the service was incredibly quick.",
+        rating: 4.9,
+        orderedItem: "Paneer Tikka",
+        date: "08/07/26"
+    },
+    {
+        id: 2,
+        review: "Ordered Veg Biryani online and it arrived much earlier than expected. The food was still hot, packed neatly, and tasted just like restaurant-quality.",
+        rating: 4.8,
+        orderedItem: "Veg Biryani",
+        date: "11/07/26"
+    },
+    {
+        id: 3,
+        review: "The restaurant has such a calm and welcoming ambience. We tried the Masala Dosa and Cold Coffee, and both had an authentic homemade taste. Highly recommended!",
+        rating: 5.0,
+        orderedItem: "Masala Dosa & Cold Coffee",
+        date: "15/07/26"
+    },
+    {
+        id: 4,
+        review: "Late-night online delivery was surprisingly fast. The Cheesecake and Margherita Pizza arrived fresh, cheesy, and exactly as shown in the pictures.",
+        rating: 4.7,
+        orderedItem: "Margherita Pizza & Cheesecake",
+        date: "19/07/26"
+    },
+    {
+        id: 5,
+        review: "Loved everything about this place, from the beautiful interiors to the polite staff. The butter paneer masala and garlic naan had an authentic North Indian flavor and generous portions.",
+        rating: 4.9,
+        orderedItem: "Chole Bhature",
+        date: "22/07/26"
+    },
+    {
+        id: 6,
+        review: "I've ordered from HungerGo multiple times, and they've never disappointed. Fast delivery, secure packaging, and every dish arrives fresh and delicious. Their Cheese rolls is my favorite!",
+        rating: 4.8,
+        orderedItem: "Cheese rolls",
+        date: "25/07/26"
+    }
+];
 
 reserveButton.addEventListener('click',function(){
                                             reserveSection.scrollIntoView()
@@ -757,6 +811,8 @@ for (let id of categorieslist){
     })
 }
 
+// displayCategories.style.boxShadow="0px 2px 10px 0px rgb(78, 76, 76)";
+
 if (displayCategories=="All"){
     food=[...fooditems]
 }
@@ -764,9 +820,68 @@ else{
     food=fooditems.filter(item=>item.cat=="displayCategories")
 }
 
+let finalcards = [];
+
+applyfilter.addEventListener("click", () => {
+
+    finalcards = food.filter((food) => {
+
+        let ratingMatch = true;
+        let priceMatch = true;
+        let bestsellerMatch = true;
+
+        if(ratingFilter.value !== "All Ratings") {
+            let rating = Number(ratingFilter.value.replace("+",""));
+            ratingMatch = food.rating >= rating;
+        }
+
+        if(priceFilter.value !== "All Prices") {
+
+            if(priceFilter.value === "₹0 - ₹199") {
+                priceMatch = food.price <= 199;
+            }
+
+            else if(priceFilter.value === "₹200 - ₹299") {
+                priceMatch = food.price >= 200 && food.price <= 299;
+            }
+
+            else if(priceFilter.value === "₹300 - ₹399") {
+                priceMatch = food.price >= 300 && food.price <= 399;
+            }
+
+            else if(priceFilter.value === "₹400+") {
+                priceMatch = food.price >= 400;
+            }
+        }
+
+        if(bestsellerFilter.value !== "All Items") {
+
+            if(bestsellerFilter.value === "Best Sellers") {
+                bestsellerMatch = food.bestseller === true;
+            }
+
+            else if(bestsellerFilter.value === "Regular Items") {
+                bestsellerMatch = food.bestseller === false;
+            }
+        }
+
+        return ratingMatch && priceMatch && bestsellerMatch;
+    });
+});
+
+clearfilter.addEventListener("click", () => {
+
+    ratingFilter.value = "All Ratings";
+    priceFilter.value = "All Prices";
+    bestsellerFilter.value = "All Items";
+
+    finalcards = food;
+
+});
+
 let html="";
 
-for (let i of shuffle(food)){
+for (let i of shuffle(finalcards)){
     console.log(i.name, i.bestSeller);
     html+= `<div class="foodcard">
                            <img src="images/${i.category}/${i.name.toLowerCase()}.jpg" alt=${i.name}>
@@ -794,4 +909,85 @@ for (let i of shuffle(food)){
 
 container.innerHTML+=html;
 
+function displayreviews(start){
+    currentreviews=reviews.slice(start,start+3);
+    reviewshtml=""
+    
+    for (let i of currentreviews){
+    reviewshtml+=`<div class="reviewscard>
+                    <div class="details">
+                        <div class="ratings">${i.rating}<i style="color:gold" class="fa-solid fa-star"></i></div>
+                        <div class="time">${i.date}</div>
+                    </div>
+                    <div>${i.review}</div>
+                    <div class="orderedfood"> ${i.orderedItem} </div>
+                  </div>`
+    }
+    reviewcardscontainer.innerHTML+=reviewshtml;
+}
+displayreviews(0);
 
+function changeReviews(){
+
+    wrapper.classList.add("slide-left");
+
+}
+
+wrapper.addEventListener("transitionend",()=>{
+
+    if(!wrapper.classList.contains("slide-left"))
+        return;
+
+    wrapper.classList.remove("slide-left");
+
+    currentIndex+=3;
+
+    if(currentIndex>=reviews.length){
+
+        currentIndex=0;
+
+    }
+
+    displayReviews(currentIndex);
+
+    wrapper.classList.add("slide-right");
+
+    requestAnimationFrame(()=>{
+
+        requestAnimationFrame(()=>{
+
+            wrapper.classList.remove("slide-right");
+
+            wrapper.classList.add("slide-center");
+
+        });
+
+    });
+
+});
+
+wrapper.addEventListener("transitionend",()=>{
+
+    wrapper.classList.remove("slide-center");
+
+});
+
+wrapper.addEventListener("transitionend",()=>{
+
+    wrapper.classList.remove("slide-center");
+
+});
+
+let interval=setInterval(changeReviews,10000);
+
+wrapper.addEventListener("mouseenter",()=>{
+
+    clearInterval(interval);
+
+});
+
+wrapper.addEventListener("mouseleave",()=>{
+
+    interval=setInterval(changeReviews,10000);
+
+});

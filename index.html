@@ -129,14 +129,41 @@
             </div>
 
             <div id="filters">
-                <div><i  class=" icons fa-solid fa-sliders"></i>Filters</div>
+                <div>Filters</div>
 
                 <div class="filteroptions">
-                    <div> Rating <i class="fa-solid fa-angle-down"></i></div>
-                    <div> Price <i class="fa-solid fa-angle-down"></i></div>
-                    <div> Best Sellers <i class="fa-solid fa-angle-down"></i></div>
+                    <div>
+                        <label for="rating">Rating</label>
+                        <select id="rating">
+                            <option selected>All Ratings</option>
+                            <option>4.5+</option>
+                            <option>4+</option>
+                            <option>3.5+</option>
+                            <option>3+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="prices">Prices</label>
+                        <select id="prices">
+                            <option selected>All Prices</option>
+                            <option>₹0 - ₹199</option>
+                            <option>₹200 - ₹299</option>
+                            <option>₹300 - ₹399</option>
+                            <option>₹400+</option>
+                            
+                        </select>
+                    </div>
+                    <div> 
+                        <label for="bestseller">BestSellers</label>
+                        <select id="bestseller">
+                            <option selected>All Items</option>
+                            <option>Best Sellers</option>
+                            <option>Regular Items</option>
+                        </select>
+                    </div>
                 </div>
 
+                <div class="applyfilters"><i  class=" icons fa-solid fa-sliders"></i> Apply Filters</div>
                 <div class="clearfilters"><i class="icons fa-solid fa-arrows-rotate"></i>Clear Filters</div>
             </div>
 
@@ -256,7 +283,9 @@
             <h1 class="reviewhead">What Our Customers Say</h1>
         </div>
 
-        <div id="reviewscontainer"></div>
+        <div id="reviewscontainer">
+            <div id="reviewcardscontainer"></div>
+        </div>
 
     </section>
 
