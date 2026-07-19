@@ -33,6 +33,7 @@ const applyfilter = document.querySelector(".applyfilters");
 const clearfilter = document.querySelector(".clearfilters");
 
 const reviewcardscontainer = document.querySelector("#reviewcardscontainer");
+const reserveForm = document.querySelector("#reservetable"); 
 const dateInput = document.querySelector("#date");
 
 const overlay = document.querySelector("#overlay");
@@ -1001,8 +1002,13 @@ reviewcardscontainer.addEventListener("mouseleave", ()=>{
 let cart = JSON.parse(localStorage.getItem("hg_cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("hg_wishlist")) || [];
 
-function saveCart(){ localStorage.setItem("hg_cart", JSON.stringify(cart)); }
-function saveWishlist(){ localStorage.setItem("hg_wishlist", JSON.stringify(wishlist)); }
+function saveCart(){
+    localStorage.setItem("hg_cart", JSON.stringify(cart));
+}
+
+function saveWishlist(){
+    localStorage.setItem("hg_wishlist", JSON.stringify(wishlist));
+}
 
 function updateCounts(){
     const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -1167,10 +1173,6 @@ wishlistItemsEl.addEventListener('click', function(e){
     else if (e.target.closest(".removeitem")) toggleWishlist(name);
 });
 
-if (dateInput) {
-    dateInput.min = new Date().toISOString().split("T")[0];
-}
-
 let slideIndex = 0;
 
 function showSlide(index){
@@ -1197,6 +1199,35 @@ toggle.addEventListener('click', function () {
     toggle.classList.toggle("fa-moon", isDark);
     localStorage.setItem("hg_theme", isDark ? "dark" : "light");
 });
+
+if (dateInput) {
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.min = today;
+    
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 30);
+    const maxDateString = maxDate.toISOString().split("T")[0];
+    dateInput.max = maxDateString;
+}
+
+if (reserveForm) {
+    reserveForm.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const name = document.querySelector("#name").value;
+
+        const successMsg = document.createElement('div');
+        successMsg.className = 'successMsg';    
+        successMsg.textContent = `Table Reserved Successfully for ${name}!`;
+        reserveSection.appendChild(successMsg);
+
+        setTimeout(() => {
+            successMsg.remove();
+        }, 3000);
+
+        reserveForm.reset();
+    });
+}
 
 renderFood();
 renderCart();
