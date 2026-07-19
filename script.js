@@ -812,8 +812,28 @@ searchbar.addEventListener('input', function(){
 });
 
 document.addEventListener('click', function (e) {
-                                if (!search.contains(e.target) && !suggestionbox.contains(e.target)) {
-                                    hideSuggestions();}
+    if (!search.contains(e.target) && !suggestionbox.contains(e.target)) {
+        hideSuggestions();}
+    if (e.target.closest(".suggestionbox div")) {
+        const selectedFood = e.target.textContent.trim();
+        const item = fooditems.find(f => f.name === selectedFood);
+        
+        if (item) {
+            menuSection.scrollIntoView();
+            searchbar.value = "";
+            hideSuggestions();
+            displayCategories = item.cat;
+            document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
+            document.getElementById(item.cat).classList.add("activecategory");
+            renderFood();
+            
+            // Highlight the selected item (optional)
+            setTimeout(() => {
+                const card = document.querySelector(`[data-name="${item.name}"]`);
+                if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 500);
+        }
+    }
 });
 
 function shuffle(arr) {

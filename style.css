@@ -91,7 +91,6 @@ nav{
 
 .links:hover{
     transform: scale(1.05);
-    /* box-shadow: 2px 3px 5px 1px rgba(168, 167, 167, 0.8); */
     font-weight: 550;
 }
 
@@ -105,7 +104,11 @@ nav{
     pointer-events:none;
     transition: opacity 0.25s ease;
 }
-#overlay.show{ opacity:1; pointer-events:all; }
+
+#overlay.show{
+    opacity:1;
+    pointer-events:all;
+}
 
 .sidedrawer{
     position:fixed;
@@ -119,6 +122,7 @@ nav{
     overflow-y:auto;
     transition: right 0.3s ease;
 }
+
 .sidedrawer.open{
      right:0; 
 }
@@ -142,6 +146,7 @@ nav{
     margin-top:10px;
 
 }
+
 .sidedrawer h3{
     color:#554E4E;
     font-weight:450;
@@ -179,6 +184,7 @@ nav{
     padding:15px 0;
     border-bottom:1px solid #EDEAE6;
 }
+
 .cartitem img, .wishlistitem img{
     width:70px;
     height:70px;
@@ -222,8 +228,8 @@ nav{
     color:#554E4E;
     cursor:pointer;
     padding:8px;
-
 }
+
 .removeitem:hover{
     color: rgb(255, 82, 52);
 }
@@ -293,20 +299,21 @@ nav{
 }
 
 #home{
+    position:relative;
     padding-top: 70px;
 }
 
 #home video{
     display:block;
     width:100%;
-    position:relative;
     margin:0;
 }
 
 #hometext{
+    width:100%;
     position: absolute;
-    top:55%;
-    left: 50%;                
+    top:45%;
+    left: 50%;         
     transform: translateX(-50%);
     text-align: center;
     font-size: 25px;
@@ -331,8 +338,15 @@ nav{
     line-height: 1.7;
 }
 
+.hometextbuttons{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap:50px
+}
+
 #hometext button{
-    margin:40px 20px;
+    margin:40px 0px;
     width:180px;
     height:50px;
     font-size: 23px;
@@ -576,6 +590,13 @@ p.menuhead{
     padding:6px;
 }
 
+.applyandclear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
 .clearfilters, .applyfilters{
     padding:4px;
     cursor: pointer;
@@ -787,7 +808,7 @@ p.reservehead{
     align-items: center;
     position:relative;
     font-size: 20px;
-    padding:30px;
+    padding:50px 40px;
     border-radius:20px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.05);
 }   
@@ -796,14 +817,16 @@ p.reservehead{
     display: flex;
     flex-direction: column;
     align-items: center; 
+    width:100%;
 }
 
 .part{
     margin:0 auto;
-    padding:10px;
+    padding:20px 0px;
     display:flex;
     flex-direction: column;
-    gap:15px;
+    gap:25px;
+    width:100%;
 }
 
 .part div{
@@ -811,7 +834,7 @@ p.reservehead{
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 8px;
     flex:1;
 }
 
@@ -822,8 +845,11 @@ form label{
     padding:0px;
     flex: 0 0 200px;
     text-align: left;
-    color:#554E4E;
+    color:#1A1212;
     font-weight:500;
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    margin-bottom: 3px; 
 }
 
 form input, form select{
@@ -1158,68 +1184,487 @@ footer p{
     margin:0;
 }
 
-/* body.dark{
-    background-color:#181414;
-    color:#EDEAE6;
+
+/* TASK 1 — RESPONSIVE MEDIA QUERIES */
+  
+
+@media (max-width: 1024px) {
+
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #reviewcardscontainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #navbarL {
+        width: 35%;
+    }
+
+    #navbarR {
+        width: 65%;
+        font-size: 16px;
+    }
+
+    .links {
+        padding: 5px 8px;
+    }
+    
+    #hometext h1 {
+        font-size: 55px;
+    }
+    #hometext h2 {
+        font-size: 30px;
+    }
 }
 
-body.dark nav,
-body.dark footer,
-body.dark .sidedrawer{
-    background-color:#221c1c;
-    color:#EDEAE6;
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
+    }
+
+    #navbarL, #navbarR {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 5px;
+    }
+
+    #navbarR {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    #home {
+        padding-top: 130px; 
+    }
+
+    #hometext h1 {
+        font-size: 45px;
+    }
+
+    #hometext h2 {
+        font-size: 25px;
+    }
+    
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #reviewcardscontainer {
+        grid-template-columns: 1fr;
+        margin: 0 20px;
+    }
+    
+    .reserve {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    #left, #right {
+        width: 100%;
+    }
+
+    #left {
+        height: 350px;
+        margin-bottom: 30px;
+    }
+
+    .part {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .part div {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form label {
+        flex: none;
+        margin-bottom: 5px;
+    }
+
+    form input, form select {
+        width: 100%;
+    }
+    
+    #filters {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .filteroptions {
+        margin: 0;
+        flex-wrap: wrap;
+    }
+    
+    .info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #def {
+        flex-direction: column;
+    }
+
+    .l, .r {
+        width: 100%;
+    }
+
+    .l {
+        height: 400px;
+    }
 }
 
-body.dark #navbarR a{
-    color:#EDEAE6;
+@media (max-width: 576px) {
+
+    #hometext h1 {
+        font-size: 40px;
+    }
+    #hometext h2 {
+        font-size: 25px;
+    }
+
+    #hometext p{
+        font-size: 15px;
+    }
+
+    .hometextbuttons{
+        gap:0px;
+    }
+    
+    #hometext button{
+        margin:20px;
+        font-size: 15px;
+        height:40px;
+        width:100px;
+    }
+
+    .reservebutton{
+        width:150px !important; 
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .extra {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    #navbarR {
+        font-size: 14px;
+        gap: 15px;
+    }
+
+    .sidedrawer {
+        width: 100%;
+        right: -100%;
+    }
+    
+    h1.menuhead, h1.reservehead, h1.abouthead, h1.reviewhead {
+        font-size: 35px;
+    }
+    h2.menuhead, h2.reservehead, h2.abouthead, h2.reviewhead {
+        font-size: 25px;
+    }
 }
 
-body.dark #menu,
-body.dark #reviews{
-    background-color:rgba(255,255,255,0.03);
+@media (max-width: 400px) {
+
+    #hometext h1 {
+        font-size: 25px;
+    }
+    #hometext h2 {
+        font-size: 20px;
+    }
+
+    #hometext p{
+        font-size: 15px;
+    }
+
+    .hometextbuttons{
+        gap:0px;
+    }
+    
+    #hometext button{
+        margin:10px;
+        font-size: 15px;
+        height:40px;
+        width:100px;
+    }
+
+    .reservebutton{
+        width:150px !important; 
+    }
+
+    form button, .reservebutton, .viewmenu {
+        width: 100% !important;
+        margin: 30px 0;
+    }
+
+    .categoriescard {
+        min-width: 150px;
+    }
+
+    #categories img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .foodoptions {
+        font-size: 20px;
+    }
+
+    .part {
+        padding: 0px;
+    }
 }
 
-body.dark #reserve,
-body.dark #about{
-    background-color:rgba(255,255,255,0.02);
+
+/* TASK 2 — PREMIUM DARK MODE */
+
+
+body.dark {
+    background-color: #1A1614;
+    color: #F2EFEB;
 }
 
-body.dark .search,
-body.dark .suggestionbox,
-body.dark #categories,
-body.dark #filters,
-body.dark #right{
-    background-color:#221c1c;
-    color:#EDEAE6;
+body.dark ::-webkit-scrollbar-track {
+    background: #1A1614;
 }
 
-body.dark #searchbar{
-    background-color:#221c1c;
-    color:#EDEAE6;
+body.dark ::-webkit-scrollbar-thumb {
+    background: #3D3330;
 }
 
-body.dark form input,
-body.dark form select{
-    background-color:#2b2424;
-    color:#EDEAE6;
-    border-color: rgba(255, 82, 52, 0.35);
+body.dark ::-webkit-scrollbar-thumb:hover {
+    background: #5C4D48;
 }
 
-body.dark .foodcard,
-body.dark .reviewscard{
-    background-color:#221c1c;
+body.dark nav {
+    background-color: #241E1C;
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
-body.dark .fooddesc .category,
-body.dark .reviewscard .reviewtext,
-body.dark p.menuhead,
-body.dark p.reservehead,
-body.dark p.reviewhead,
-body.dark p.abouthead,
-body.dark .closing p{
-    color:#CFC9C2;
+body.dark #navbarR a {
+    color: #F2EFEB;
 }
 
-body.dark .categoriescardtext{
-    color:#CFC9C2;
-} */
+body.dark .sidedrawer {
+    background-color: #241E1C;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .sidedrawer .closedrawer {
+    color: #A89F9A;
+}
+
+body.dark .sidedrawer h3, body.dark #emptycart, body.dark #emptywishlist, body.dark .profileinfo p {
+    color: #A89F9A;
+}
+
+body.dark #emptycart p:first-child, body.dark #emptywishlist p:first-child, body.dark .profileinfo p span {
+    color: #F2EFEB;
+}
+
+body.dark .cartitem, body.dark .wishlistitem {
+    border-bottom: 1px solid #3D3330;
+}
+
+body.dark .cartitem-price, body.dark .wishlistitem-price {
+    color: #A89F9A;
+}
+
+body.dark .qtycontrol button {
+    border: 1px solid #3D3330;
+    background: #1A1614;
+    color: #F2EFEB;
+}
+body.dark .removeitem, body.dark .addtocartfromwishlist {
+    color: #A89F9A;
+}
+
+body.dark .removeitem:hover {
+    color: #FF5234;
+}
+
+body.dark .carttotalrow {
+    border-top: 2px solid #F2EFEB;
+}
+
+body.dark .profilebtns button {
+    background: #1A1614;
+    border: 1px solid #3D3330;
+    color: #F2EFEB;
+}
+
+body.dark .profilebtns button:hover {
+    background: #3D3330;
+}
+
+body.dark h1.menuhead, body.dark h1.reservehead, body.dark h1.abouthead, body.dark h1.reviewhead {
+    color: #F2EFEB;
+}
+
+body.dark p.menuhead, body.dark p.reservehead, body.dark p.abouthead {
+    color: #A89F9A;
+}
+
+body.dark #menu {
+    background-color: rgba(255, 82, 52, 0.03);
+}
+
+body.dark .search {
+    background-color: #241E1C;
+    border: 1px solid rgba(255, 82, 52, 0.3);
+}
+
+body.dark #searchbar {
+    background-color: transparent;
+    color: #F2EFEB;
+}
+
+body.dark .suggestionbox {
+    background-color: #241E1C;
+    color: #F2EFEB;
+    border-color: #FF5234;
+}
+
+body.dark #categories {
+    background-color: rgba(36, 30, 28, 0.85);
+    border: 1px solid #3D3330;
+}
+
+body.dark .categoriescardtext {
+    color: #A89F9A;
+}
+
+body.dark #categories img {
+    border: 1px solid #3D3330;
+}
+
+body.dark #filters {
+    background: rgba(36, 30, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #F2EFEB;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .filteroptions select {
+    background-color: #1A1614;
+    color: #F2EFEB;
+    border: 1px solid #3D3330;
+}
+
+body.dark .clearfilters:hover, body.dark .filteroptions div:hover, body.dark .applyfilters:hover {
+    color: #FF5234;
+}
+
+body.dark .foodcard {
+    border: 1px solid #3D3330;
+    background-color: #241E1C;
+}
+
+body.dark .foodcard:hover {
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .foodcard img {
+    border: 1px solid #3D3330;
+}
+
+body.dark .foodoptions div {
+    background-color: #1A1614;
+    color: #F2EFEB;
+    border: 1px solid #3D3330;
+}
+
+body.dark .fooddesc .category {
+    color: #A89F9A;
+}
+
+body.dark #reserve {
+    background-color: rgba(255, 82, 52, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark #right {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background-color: #241E1C;
+}
+
+body.dark form label {
+    color: #A89F9A;
+}
+
+body.dark form input, body.dark form select {
+    background-color: #1A1614;
+    border: 1px solid rgba(255, 82, 52, 0.3);
+    color: #F2EFEB;
+}
+
+body.dark .info div, body.dark .extra div {
+    border: 1px solid #3D3330;
+    background-color: #241E1C;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .closing p {
+    color: #A89F9A;
+}
+
+body.dark #reviews {
+    background-color: rgba(255, 82, 52, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark .reviewscard {
+    border: 1px solid #3D3330;
+    background-color: #241E1C;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+body.dark #about {
+    background-color: rgba(255, 82, 52, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark .l {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .r li, body.dark .aboutclosing {
+    color: #A89F9A;
+}
+
+body.dark .prev, body.dark .next {
+    background-color: rgba(26, 22, 20, 0.85);
+    color: #F2EFEB;
+    border: 1px solid #3D3330;
+}
+
+body.dark .prev:hover, body.dark .next:hover {
+    background-color: #241E1C;
+    color: #FF5234;
+}
+
+body.dark .contact {
+    background-color: rgba(255, 82, 52, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark footer {
+    background-color: #241E1C;
+    box-shadow: 0px -2px 10px 1px rgba(0, 0, 0, 0.4);
+    color: #F2EFEB;
+}
