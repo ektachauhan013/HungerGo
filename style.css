@@ -29,6 +29,7 @@ body{
     background-color: #FAF9F6;
     margin:0px;
     padding:0px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav{
@@ -530,10 +531,6 @@ p.menuhead{
     box-shadow: 0px 2px 12px 0px rgba(255, 82, 52, 0.35);
 }
 
-/* .categoriescard.activecategory img{
-    border:2px solid rgb(255, 82, 52);
-} */
-
 .categoriescardtext{
     color: #554E4E;
     width:100%;
@@ -549,42 +546,49 @@ p.menuhead{
     align-items: center;
     width:100%;
     height:50px;
-    font-size: 20px;
-    color:#554E4E;
+    color:black;
     background: rgba(255,255,255,0.65);
     border:1px solid rgba(0,0,0,.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
+#filters .heading{
+    font-size: 25px;;
+}
+
 .filteroptions{
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap:100px;
+    gap:20px;
     margin:0px 0px 0px 60px;
     cursor: pointer;
+    font-size: 15px;
+    font-weight: 420;
+}
+
+.filteroptions select{
+    padding:5px;
+    margin:5px;
 }
 
 .filteroptions div{
     padding:6px;
 }
 
-.clearfilters{
+.clearfilters, .applyfilters{
     padding:4px;
     cursor: pointer;
+    font-size: 18px;
 }
 
-.clearfilters:hover,.filteroptions div:hover{
+.clearfilters:hover, .filteroptions div:hover, .applyfilters:hover{
     transform: scale(1.05);
-    color:#474242;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.09);
+    color:#000000;
+    font-weight: 450;
 }
 
-.clearfilters:active{
-    transform: scale(0.95);
-}
-
-.filteroptions div:active{
+.clearfilters:active, .applyfilters:active{
     transform: scale(0.95);
 }
 
@@ -593,7 +597,7 @@ p.menuhead{
 }
 
 .container{
-    margin:100px auto;
+    margin:50px auto;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     width:100%;
@@ -870,13 +874,13 @@ form button:active{
     display:flex;
     justify-content: center;
     align-items: center;
+    gap:50px;
 }
 
 .info div{
-    margin:60px 40px;
+    margin:20px;
     padding:10px 15px;
     border:2px solid black;
-    /* background-color: rgb(248, 203, 159); */
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.333);
 }
 
@@ -937,6 +941,7 @@ h2.reviewhead{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:20px;
+    margin:0px 50px;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
@@ -953,8 +958,8 @@ h2.reviewhead{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap:10px;
+    align-items: flex-start;
+    gap:20px;
 }
 
 .reviewscard .details{
@@ -963,9 +968,12 @@ h2.reviewhead{
     justify-content: space-between;
 }
 
-.reviewscard .reviewfood{
-    text-align: left;
+.reviewscard .orderedfood{
+    text-align: left !important;
+    font-weight: 500;
+    font-size: 15px;
 }
+
 
 #about{
     background-color: rgba(249, 223, 188,0.15);
@@ -976,7 +984,7 @@ h2.reviewhead{
     margin:0px auto;
     padding:10px;
     text-align: center;
-    width:70%;
+    width:100%;
 }
 
 h1.abouthead{
@@ -1021,7 +1029,6 @@ p.abouthead{
 
 .slide{
     position: absolute;
-    padding:20px;
     width: 100%;
     height:100%;
     object-fit: cover;
@@ -1052,10 +1059,10 @@ p.abouthead{
 }
 
 .prev{
-    left: 20px;
+    left: 10px;
 }
 .next{
-    right: 20px;
+    right: 10px;
 }
 
 .prev:hover,.next:hover {
@@ -1150,3 +1157,69 @@ footer{
 footer p{
     margin:0;
 }
+
+/* body.dark{
+    background-color:#181414;
+    color:#EDEAE6;
+}
+
+body.dark nav,
+body.dark footer,
+body.dark .sidedrawer{
+    background-color:#221c1c;
+    color:#EDEAE6;
+}
+
+body.dark #navbarR a{
+    color:#EDEAE6;
+}
+
+body.dark #menu,
+body.dark #reviews{
+    background-color:rgba(255,255,255,0.03);
+}
+
+body.dark #reserve,
+body.dark #about{
+    background-color:rgba(255,255,255,0.02);
+}
+
+body.dark .search,
+body.dark .suggestionbox,
+body.dark #categories,
+body.dark #filters,
+body.dark #right{
+    background-color:#221c1c;
+    color:#EDEAE6;
+}
+
+body.dark #searchbar{
+    background-color:#221c1c;
+    color:#EDEAE6;
+}
+
+body.dark form input,
+body.dark form select{
+    background-color:#2b2424;
+    color:#EDEAE6;
+    border-color: rgba(255, 82, 52, 0.35);
+}
+
+body.dark .foodcard,
+body.dark .reviewscard{
+    background-color:#221c1c;
+}
+
+body.dark .fooddesc .category,
+body.dark .reviewscard .reviewtext,
+body.dark p.menuhead,
+body.dark p.reservehead,
+body.dark p.reviewhead,
+body.dark p.abouthead,
+body.dark .closing p{
+    color:#CFC9C2;
+}
+
+body.dark .categoriescardtext{
+    color:#CFC9C2;
+} */

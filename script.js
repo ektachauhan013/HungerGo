@@ -33,6 +33,7 @@ const applyfilter = document.querySelector(".applyfilters");
 const clearfilter = document.querySelector(".clearfilters");
 
 const reviewcardscontainer = document.querySelector("#reviewcardscontainer");
+const dateInput = document.querySelector("#date");
 
 const overlay = document.querySelector("#overlay");
 const cartIcon = document.querySelector("#cartIcon");
@@ -901,6 +902,8 @@ function renderFood(){
     }
 
     container.innerHTML = html; 
+    updateWishlistHearts();
+    updateCartIcons();
 }
 
 container.addEventListener('click', function(e){
@@ -933,8 +936,6 @@ clearfilter.addEventListener("click", () => {
     All.classList.add("activecategory");
     renderFood();
 });
-
-renderFood();  
 
 let currentIndex = 0;
 
@@ -1053,12 +1054,14 @@ function addToCart(name){
     else cart.push({ name: fooditem.name, price: fooditem.price, image: fooditem.image, qty: 1 });
     saveCart();
     renderCart();
+    updateCartIcons();
 }
 
 function removeFromCart(name){
     cart = cart.filter(c => c.name !== name);
     saveCart();
     renderCart();
+    updateCartIcons();
 }
 
 function toggleWishlist(name){
@@ -1069,9 +1072,35 @@ function toggleWishlist(name){
     else wishlist.push({ name: fooditem.name, price: fooditem.price, image: fooditem.image });
     saveWishlist();
     renderWishlist();
+    updateWishlistHearts();
 }
 
-// drawer open/close
+function updateWishlistHearts(){
+    document.querySelectorAll(".foodcard").forEach(card => {
+        const name = card.dataset.name;
+        const heart = card.querySelector(".wishbtn i");
+        const wishBtn = card.querySelector(".wishbtn");
+        if (!heart) return;
+        const saved = wishlist.some(w => w.name === name);
+        heart.classList.toggle("bi-heart-fill", saved);
+        heart.classList.toggle("bi-heart", !saved);
+        wishBtn.classList.toggle("active", saved);
+    });
+}
+
+function updateCartIcons(){
+    document.querySelectorAll(".foodcard").forEach(card => {
+        const name = card.dataset.name;
+        const cartI = card.querySelector(".cartbtn i");
+        const cartBtn = card.querySelector(".cartbtn");
+        if (!cartI) return;
+        const inCart = cart.some(c => c.name === name);
+        cartI.classList.toggle("bi-cart-fill", inCart);
+        cartI.classList.toggle("bi-cart", !inCart);
+        cartBtn.classList.toggle("active", inCart);
+    });
+}
+
 function openDrawer(drawer){
     document.querySelectorAll(".sidedrawer").forEach(d => d.classList.remove("open"));
     drawer.classList.add("open");
@@ -1118,17 +1147,37 @@ wishlistItemsEl.addEventListener('click', function(e){
     else if (e.target.closest(".removeitem")) toggleWishlist(name);
 });
 
+if (dateInput) {
+    dateInput.min = new Date().toISOString().split("T")[0];
+}
+
 let slideIndex = 0;
 
 function showSlide(index){
     slides.forEach(s => s.classList.remove("active"));
-    slideIndex = (index + slides.length) % slides.length;   // wraps around both directions
+    slideIndex = (index + slides.length) % slides.length;
     slides[slideIndex].classList.add("active");
 }
 
 prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
 nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
 
-// initial render — call once near the bottom of your script
+const toggle = document.querySelector("#toggle");
+
+if (localStorage.getItem("hg_theme") === "dark") {
+    document.body.classList.add("dark");
+    toggle.classList.remove("fa-sun");
+    toggle.classList.add("fa-moon");
+}
+
+toggle.addEventListener('click', function () {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    toggle.classList.toggle("fa-sun", !isDark);
+    toggle.classList.toggle("fa-moon", isDark);
+    localStorage.setItem("hg_theme", isDark ? "dark" : "light");
+});
+
+renderFood();
 renderCart();
 renderWishlist();
