@@ -828,7 +828,6 @@ document.addEventListener('click', function (e) {
             document.getElementById(item.cat).classList.add("activecategory");
             renderFood();
             
-            // Highlight the selected item (optional)
             setTimeout(() => {
                 const card = document.querySelector(`[data-name="${item.name}"]`);
                 if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
