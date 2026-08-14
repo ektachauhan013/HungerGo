@@ -812,6 +812,23 @@ searchbar.addEventListener('input', function(){
 
 });
 
+searchbar.addEventListener('keypress', function(e){
+    if (e.key === 'Enter') {
+        const searchText = searchbar.value.toLowerCase().trim();
+        
+        if (searchText === "") {
+            alert("Please type something to search!");
+            return;
+        }
+        
+        displayCategories = "All";
+        document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
+        All.classList.add("activecategory");
+        hideSuggestions();
+        renderFood();
+    }
+});
+
 document.addEventListener('click', function (e) {
     if (!search.contains(e.target) && !suggestionbox.contains(e.target)) {
         hideSuggestions();}
@@ -845,6 +862,22 @@ function shuffle(arr) {
     return arr;
 }
 
+document.querySelector("#searchicon").addEventListener('click', function(){
+    console.log("Search icon clicked!");
+    const searchText = searchbar.value.toLowerCase().trim();
+    console.log("Search text:", searchText);
+    
+    if (searchText === "") {
+        alert("Please type something to search!");
+        return;
+    }
+    
+    displayCategories = "All";
+    hideSuggestions();
+    renderFood();
+    console.log("renderFood called!");
+});
+
 function renderFood(){
 
     let food = [];
@@ -854,6 +887,11 @@ function renderFood(){
     }
     else{
         food=fooditems.filter(item=>item.cat==displayCategories);
+    }
+
+    const searchText = searchbar.value.toLowerCase().trim();
+    if (searchText !== "") {
+        food = food.filter(item => item.name.toLowerCase().includes(searchText));
     }
 
     let finalcards = food.filter((food) => {
@@ -893,6 +931,16 @@ function renderFood(){
 
         return ratingMatch && priceMatch && bestsellerMatch;
     });
+
+    if (finalcards.length === 0) {
+        container.innerHTML = `
+            <div class="no-food-message">
+                <h3>No dish found</h3>
+                <p>Try changing your search or filter options.</p>
+            </div>
+        `;
+        return;
+    }
 
     let html="";
 
@@ -939,6 +987,8 @@ for (let id of categorieslist){
 
     card.addEventListener('click', function(){
         displayCategories = id;
+        searchbar.value = "";
+        hideSuggestions();
         document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
         card.classList.add("activecategory");
         renderFood();
@@ -952,6 +1002,8 @@ clearfilter.addEventListener("click", () => {
     priceFilter.value = "All Prices";
     bestsellerFilter.value = "All Items";
     displayCategories = "All";
+    searchbar.value = "";
+    hideSuggestions();
     document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
     All.classList.add("activecategory");
     renderFood();
