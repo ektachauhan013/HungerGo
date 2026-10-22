@@ -87,8 +87,8 @@ HungerGo is a modern, responsive restaurant website that delivers a premium digi
 
 ## Project Structure
 
+```text
 HungerGo/
-│
 ├── index.html
 ├── cart.html
 ├── profile.html
@@ -97,7 +97,23 @@ HungerGo/
 ├── script.js
 ├── food.mp4
 ├── images/
-└── Readme.md  
+└── Readme.md
+```
+
+--- 
+
+## Project Screenshots
+
+<table>
+  <tr>
+    <td><img src="images/Project/hero_section.png" width="400" alt="HungerGo Hero Section"></td>
+    <td><img src="images/Project/menu.png" width="400" alt="HungerGo Menu"></td>
+  </tr>
+  <tr>
+    <td><img src="images/Project/cart.png" width="400" alt="HungerGo Cart"></td>
+    <td><img src="images/Project/reserve_table.png" width="400" alt="HungerGo Reserve Table"></td>
+  </tr>
+</table>
 
 --- 
 
@@ -105,4 +121,4 @@ HungerGo/
 
 **Ekta Chauhan**
 
-Built and maintained as a personal web development project — feel free to reach out for feedback or collaboration ideas.
+Built as a personal web development project. Open to feedback, suggestions, and collaboration.
