@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -181,33 +181,82 @@
 
                 <div class="filteroptions">
                     <div>
-                        <label for="rating">Rating</label>
-                        <select id="rating">
-                            <option selected>All Ratings</option>
-                            <option>4.5+</option>
-                            <option>4+</option>
-                            <option>3.5+</option>
-                            <option>3+</option>
-                        </select>
+                        <label>Rating</label>
+                        <input type="hidden" id="rating" value="All Ratings">
+                        <div class="custom-dropdown" id="ratingDropdown">
+                            <button type="button" class="dropdown-btn" id="ratingDropdownBtn">
+                                <span id="ratingDropdownText">All Ratings</span>
+                                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                            </button>
+                            <div class="dropdown-menu" id="ratingMenu">
+                                <div class="dropdown-option selected" data-value="All Ratings">All Ratings</div>
+                                <div class="dropdown-option" data-value="4.5+">4.5+</div>
+                                <div class="dropdown-option" data-value="4+">4+</div>
+                                <div class="dropdown-option" data-value="3.5+">3.5+</div>
+                                <div class="dropdown-option" data-value="3+">3+</div>
+                            </div>
+                        </div>
                     </div>
                     <div>
-                        <label for="prices">Prices</label>
-                        <select id="prices">
-                            <option selected>All Prices</option>
-                            <option>₹0 - ₹199</option>
-                            <option>₹200 - ₹299</option>
-                            <option>₹300 - ₹399</option>
-                            <option>₹400+</option>
-                            
-                        </select>
+                        <label>Prices</label>
+                        <input type="hidden" id="prices" value="All Prices">
+                        <div class="custom-dropdown" id="pricesDropdown">
+                            <button type="button" class="dropdown-btn" id="pricesDropdownBtn">
+                                <span id="pricesDropdownText">All Prices</span>
+                                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                            </button>
+                            <div class="dropdown-menu" id="pricesMenu">
+                                <div class="dropdown-option selected" data-value="All Prices">All Prices</div>
+                                <div class="dropdown-option" data-value="₹0 - ₹199">₹0 - ₹199</div>
+                                <div class="dropdown-option" data-value="₹200 - ₹299">₹200 - ₹299</div>
+                                <div class="dropdown-option" data-value="₹300 - ₹399">₹300 - ₹399</div>
+                                <div class="dropdown-option" data-value="₹400+">₹400+</div>
+                            </div>
+                        </div>
                     </div>
                     <div> 
-                        <label for="bestseller">BestSellers</label>
-                        <select id="bestseller">
-                            <option selected>All Items</option>
-                            <option>Best Sellers</option>
-                            <option>Regular Items</option>
-                        </select>
+                        <label>BestSellers</label>
+                        <input type="hidden" id="bestseller" value="All Items">
+                        <div class="custom-dropdown" id="bestsellerDropdown">
+                            <button type="button" class="dropdown-btn" id="bestsellerDropdownBtn">
+                                <span id="bestsellerDropdownText">All Items</span>
+                                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                            </button>
+                            <div class="dropdown-menu" id="bestsellerMenu">
+                                <div class="dropdown-option selected" data-value="All Items">All Items</div>
+                                <div class="dropdown-option" data-value="Best Sellers">Best Sellers</div>
+                                <div class="dropdown-option" data-value="Regular Items">Regular Items</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Allergens</label>
+                        <div class="custom-multiselect" id="allergenMultiselect">
+                            <button type="button" id="allergenDropdownBtn" class="multiselect-btn">
+                                <span id="allergenDropdownText">No Exclusions</span>
+                                <i class="fa-solid fa-chevron-down multiselect-arrow"></i>
+                            </button>
+                            <div class="multiselect-menu" id="allergenMenu">
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Dairy"> Dairy
+                                </label>
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Gluten"> Gluten
+                                </label>
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Soy"> Soy
+                                </label>
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Nuts"> Nuts
+                                </label>
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Eggs"> Eggs
+                                </label>
+                                <label class="multiselect-option">
+                                    <input type="checkbox" value="Sesame"> Sesame
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

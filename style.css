@@ -1,4 +1,4 @@
-*{
+﻿*{
     box-sizing: border-box;
     font-family: "poppins",sans-serif;
 }
@@ -562,6 +562,8 @@ p.menuhead{
 }
 
 #filters{
+    position: relative;
+    z-index: 100;
     margin:20px auto;
     padding:20px;
     display:flex;
@@ -593,6 +595,116 @@ p.menuhead{
 .filteroptions select{
     padding:5px;
     margin:5px;
+}
+
+.custom-multiselect,
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    transform: none !important;
+}
+
+.multiselect-btn,
+.dropdown-btn {
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 13.5px;
+    font-family: inherit;
+    border: 1px solid #767676;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 125px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    transform: none !important;
+}
+
+.multiselect-btn {
+    min-width: 145px;
+}
+
+.multiselect-btn:hover,
+.dropdown-btn:hover {
+    border-color: #FF5234;
+}
+
+.multiselect-arrow,
+.dropdown-arrow {
+    font-size: 11px;
+    color: #554E4E;
+    transition: transform 0.2s ease;
+}
+
+.custom-multiselect.open .multiselect-arrow,
+.custom-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.multiselect-menu,
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 5px;
+    min-width: 130px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    z-index: 1050;
+    display: none;
+    flex-direction: column;
+    padding: 6px 0;
+    transform: none !important;
+}
+
+.multiselect-menu {
+    min-width: 155px;
+}
+
+.multiselect-menu.open,
+.dropdown-menu.open {
+    display: flex;
+}
+
+.multiselect-option,
+.dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1A1212;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    transform: none !important;
+}
+
+.multiselect-option:hover,
+.dropdown-option:hover {
+    background-color: rgba(255, 82, 52, 0.08);
+    color: #FF5234;
+}
+
+.dropdown-option.selected {
+    font-weight: 600;
+    color: #FF5234;
+}
+
+.multiselect-option input[type="checkbox"] {
+    accent-color: #FF5234;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin: 0;
 }
 
 .filteroptions div{
@@ -710,7 +822,7 @@ p.menuhead{
     border-radius: 20px;
 }
 
-.foodname,.fooddesc{
+.foodname,.fooddesc,.additions{
     width:100%;
     display:flex;
     justify-content: space-between;
@@ -760,9 +872,28 @@ p.menuhead{
 }
 
 .foodtime{
-    padding:5px 10px;
-    width:100%;
+    width:30%;
+    color: #7A736E;
+    font-weight: 500;
     text-align: right;
+}
+
+.allergen-info {
+    display: flex;
+    width: 70%;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-right: 10px;
+}
+
+.allergen-label {
+    font-weight: 600;
+    color: #554E4E;
+    margin-right: 4px;
+}
+
+.allergen-value {
+    color: #7A736E;
 }
 
 #reserve{
@@ -1599,6 +1730,57 @@ body.dark .filteroptions select {
     background-color: #1A1614;
     color: #F2EFEB;
     border: 1px solid #3D3330;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark .filteroptions select option {
+    background-color: rgba(36, 30, 28, 0.85);
+    color: #F2EFEB;
+}
+
+body.dark .multiselect-btn,
+body.dark .dropdown-btn {
+    background-color: #1A1614;
+    color: #F2EFEB;
+    border: 1px solid #3D3330;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark .multiselect-btn:hover,
+body.dark .dropdown-btn:hover {
+    border-color: #FF5234;
+}
+
+body.dark .multiselect-arrow,
+body.dark .dropdown-arrow {
+    color: #A89F9A;
+    transition: color 0.2s ease;
+}
+
+body.dark .multiselect-menu,
+body.dark .dropdown-menu {
+    background-color: #241E1C;
+    border: 1px solid #3D3330;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .multiselect-option,
+body.dark .dropdown-option {
+    color: #F2EFEB;
+}
+
+body.dark .multiselect-option:hover,
+body.dark .dropdown-option:hover {
+    background-color: rgba(255, 82, 52, 0.15);
+    color: #FF5234;
+}
+
+body.dark .dropdown-option.selected {
+    color: #FF5234;
+    font-weight: 600;
 }
 
 body.dark .clearfilters:hover, body.dark .filteroptions div:hover, body.dark .applyfilters:hover {
@@ -1626,6 +1808,14 @@ body.dark .foodoptions div {
 
 body.dark .fooddesc .category {
     color: #A89F9A;
+}
+
+body.dark .allergen-label {
+    color: #A89F9A;
+}
+
+body.dark .allergen-value {
+    color: #7A736E;
 }
 
 body.dark #reserve {

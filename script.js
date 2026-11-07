@@ -1,4 +1,4 @@
-const viewMenuButton = document.querySelector(".viewmenu");
+﻿const viewMenuButton = document.querySelector(".viewmenu");
 const reserveButton = document.querySelector(".reservebutton");
 const homeSection = document.querySelector("#home");
 const menuSection = document.querySelector("#menu");
@@ -29,6 +29,11 @@ const Beverages = document.querySelector("#Beverages");
 const ratingFilter = document.querySelector("#rating");
 const priceFilter = document.querySelector("#prices");
 const bestsellerFilter = document.querySelector("#bestseller");
+const allergenDropdownBtn = document.querySelector("#allergenDropdownBtn");
+const allergenMultiselect = document.querySelector("#allergenMultiselect");
+const allergenMenu = document.querySelector("#allergenMenu");
+const allergenDropdownText = document.querySelector("#allergenDropdownText");
+const allergenCheckboxes = document.querySelectorAll("#allergenMenu input[type='checkbox']");
 const applyfilter = document.querySelector(".applyfilters");
 const clearfilter = document.querySelector(".clearfilters");
 
@@ -74,7 +79,8 @@ const fooditems = [
     rating: 4.4,
     bestSeller: true,
     image: "images/Appetizers/cheese rolls.jpg",
-    time:35
+    time: 35,
+    allergens: ["Dairy", "Gluten", "Soy"]
 },
 {
     name: "Chilli Potatoes",
@@ -84,7 +90,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Appetizers/chilli potatoes.jpg",
-    time:30
+    time: 30,
+    allergens: ["Soy", "Gluten", "Sesame"]
 },
 {
     name: "Crispy Corn",
@@ -94,7 +101,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: true,
     image: "images/Appetizers/crispy corn.jpg",
-    time:26
+    time: 26,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Momos",
@@ -104,7 +112,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Appetizers/momos.jpg",
-    time:29
+    time: 29,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Paneer Tikka",
@@ -114,7 +123,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: false,
     image: "images/Appetizers/paneer tikka.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy"]
 },
 {
     name: "Spring Roll",
@@ -124,7 +134,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Appetizers/spring roll.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Stuffed Mushroom Caps",
@@ -134,7 +145,8 @@ const fooditems = [
     rating: 4.4,
     bestSeller: false,
     image: "images/Appetizers/stuffed mushroom caps.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Gluten"]
 },
 
 //  BEVERAGES 
@@ -147,7 +159,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/Beverages/cold coffee.jpg",
-    time:15
+    time: 15,
+    allergens: ["Dairy"]
 },
 {
     name: "Hot Chocolate",
@@ -157,7 +170,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Beverages/hot chocolate.jpg",
-    time:25
+    time: 25,
+    allergens: ["Dairy", "Soy"]
 },
 {
     name: "Iced Tea",
@@ -167,7 +181,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Beverages/iced tea.jpg",
-    time:15
+    time: 15,
+    allergens: []
 },
 {
     name: "Kulhad Masala Chai",
@@ -177,7 +192,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: true,
     image: "images/Beverages/kulhad masala chai.jpg",
-    time:20
+    time: 20,
+    allergens: ["Dairy"]
 },
 {
     name: "Mango Smoothie",
@@ -187,7 +203,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Beverages/mango smoothie.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy"]
 },
 {
     name: "Virgin Mojito",
@@ -197,7 +214,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Beverages/virgin mojito.jpg",
-    time:15
+    time: 15,
+    allergens: []
 },
 {
     name: "Watermelon Cooler",
@@ -207,7 +225,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Beverages/watermelon cooler.jpg",
-    time:20
+    time: 20,
+    allergens: []
 },
 
 //  BURGERS 
@@ -220,7 +239,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Burgers/cheese burst burger.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Classic Veg Burger",
@@ -230,7 +250,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Burgers/classic veg burger.jpg",
-    time:20
+    time: 20,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Mushroom Veg Burger",
@@ -240,7 +261,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Burgers/mushroom veg burger.jpg",
-    time:35
+    time: 35,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Paneer Tikka Burger",
@@ -250,7 +272,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/Burgers/paneer tikka burger.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Peri Peri Veg Burger",
@@ -260,7 +283,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Burgers/peri peri veg burger.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 
 //  DESSERTS 
@@ -273,7 +297,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Desserts/cheesecake.jpg",
-    time:45
+    time: 45,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Choco Lava Cake",
@@ -283,7 +308,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/Desserts/choco lava cake.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Chocolate Brownie",
@@ -293,7 +319,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Desserts/chocolate brownie.jpg",
-    time:49
+    time: 49,
+    allergens: ["Dairy", "Gluten", "Nuts"]
 },
 {
     name: "Cookies & Cream Ice Cream",
@@ -303,7 +330,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Desserts/cookies & cream ice cream.jpg",
-    time:20
+    time: 20,
+    allergens: ["Dairy", "Gluten", "Soy"]
 },
 {
     name: "Gulab Jamun",
@@ -313,7 +341,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Desserts/gulab jamun.jpg",
-    time:35
+    time: 35,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Jalebi",
@@ -323,7 +352,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Desserts/jalebi.jpg",
-    time:40
+    time: 40,
+    allergens: ["Gluten"]
 },
 {
     name: "Kheer",
@@ -333,7 +363,8 @@ const fooditems = [
     rating: 4.4,
     bestSeller: true,
     image: "images/Desserts/kheer.jpg",
-    time:50
+    time: 50,
+    allergens: ["Dairy", "Nuts"]
 },
 {
     name: "Red Velvet Pastry",
@@ -343,7 +374,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Desserts/red velvet pastry.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy", "Gluten"]
 },
 
 //  NOODLES 
@@ -356,7 +388,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Noodles/chilli garlic noodles.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Hakka Noodles",
@@ -366,7 +399,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: false,
     image: "images/Noodles/hakka noodles.jpg",
-    time:25
+    time: 25,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Paneer Chilli Noodles",
@@ -376,7 +410,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: true,
     image: "images/Noodles/paneer chilli noodles.jpg",
-    time:35
+    time: 35,
+    allergens: ["Dairy", "Gluten", "Soy"]
 },
 {
     name: "Schezwan Noodles",
@@ -386,7 +421,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Noodles/schezwan noodles.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Soy"]
 },
 {
     name: "Veg Chow Mein",
@@ -396,7 +432,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Noodles/veg chow mein.jpg",
-    time:25
+    time: 25,
+    allergens: ["Gluten", "Soy"]
 },
 
 //  NORTH INDIAN 
@@ -409,7 +446,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/North Indian/aaloo paratha.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Butter Paneer Masala",
@@ -419,7 +457,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/North Indian/butter paneer masala.jpg",
-    time:50
+    time: 50,
+    allergens: ["Dairy", "Nuts"]
 },
 {
     name: "Dal Makhani",
@@ -429,7 +468,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/North Indian/dal makhani.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy"]
 },
 {
     name: "Dal Tadka",
@@ -439,7 +479,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/North Indian/dal tadka.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy"]
 },
 {
     name: "Dum Aaloo",
@@ -449,7 +490,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: true,
     image: "images/North Indian/dum aaloo.jpg",
-    time:45
+    time: 45,
+    allergens: ["Dairy", "Nuts"]
 },
 {
     name: "Garlic Naan",
@@ -459,7 +501,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: true,
     image: "images/North Indian/garlic naan.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 
 //  PASTA 
@@ -472,7 +515,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: true,
     image: "images/Pasta/arrabbiata pasta.jpg",
-    time:35
+    time: 35,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Classic Red Sauce Pasta",
@@ -482,7 +526,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Pasta/classic red sauce pasta.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Creamy Alfredo Pasta",
@@ -492,7 +537,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Pasta/creamy alfredo pasta.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Mac & Cheese Pasta",
@@ -502,7 +548,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Pasta/mac & cheese pasta.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Gluten"]
 },
 {
     name: "Roasted Veggie Pasta",
@@ -512,7 +559,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Pasta/roasted veggie pasta.jpg",
-    time:45
+    time: 45,
+    allergens: ["Gluten", "Dairy"]
 },
 
 //  PIZZA 
@@ -525,7 +573,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Pizza/corn & cheese pizza.jpg",
-    time:35
+    time: 35,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Margherita Pizza",
@@ -535,7 +584,8 @@ const fooditems = [
     rating: 5.0,
     bestSeller: true,
     image: "images/Pizza/margherita pizza.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Mushroom Delight Pizza",
@@ -545,7 +595,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Pizza/mushroom delight pizza.jpg",
-    time:40
+    time: 40,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Paneer Tikka Pizza",
@@ -555,7 +606,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: false,
     image: "images/Pizza/paneer tikka pizza.jpg",
-    time:40
+    time: 40,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Peri Peri Pizza",
@@ -565,7 +617,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Pizza/peri peri pizza.jpg",
-    time:30
+    time: 30,
+    allergens: ["Gluten", "Dairy"]
 },
 {
     name: "Veggie Supreme Pizza",
@@ -575,7 +628,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: false,
     image: "images/Pizza/veggie supreme pizza.jpg",
-    time:35
+    time: 35,
+    allergens: ["Gluten", "Dairy"]
 },
 
 //  RICE & BIRYANI
@@ -588,7 +642,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Rice & Biryani/jeera rice.jpg",
-    time:20
+    time: 20,
+    allergens: ["Dairy"]
 },
 {
     name: "Paneer Biryani",
@@ -598,7 +653,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/Rice & Biryani/paneer biryani.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Nuts"]
 },
 {
     name: "Schezwan Fried Rice",
@@ -608,7 +664,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/Rice & Biryani/schezwan fried rice.jpg",
-    time:35
+    time: 35,
+    allergens: ["Soy"]
 },
 {
     name: "Veg Biryani",
@@ -618,7 +675,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Rice & Biryani/veg biryani.jpg",
-    time:40
+    time: 40,
+    allergens: ["Dairy", "Nuts"]
 },
 {
     name: "Veg Pulao",
@@ -628,7 +686,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/Rice & Biryani/veg pulao.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy"]
 },
 
 // SALADS 
@@ -641,7 +700,8 @@ const fooditems = [
     rating: 4.5,
     bestSeller: false,
     image: "images/Salads/classic house salad.jpg",
-    time:15
+    time: 15,
+    allergens: [""]
 },
 {
     name: "Fresh Green Salad",
@@ -651,7 +711,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: true,
     image: "images/Salads/fresh green salad.jpg",
-    time:20
+    time: 20,
+    allergens: []
 },
 {
     name: "Rainbow Salad",
@@ -661,7 +722,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/Salads/rainbow salad.jpg",
-    time:25
+    time: 25,
+    allergens: ["Nuts", "Dairy"]
 },
 
 //  SOUTH INDIAN 
@@ -674,7 +736,8 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/South Indian/cheese masala dosa.jpg",
-    time:30
+    time: 30,
+    allergens: ["Dairy"]
 },
 {
     name: "Idli Sambar",
@@ -684,7 +747,8 @@ const fooditems = [
     rating: 4.6,
     bestSeller: false,
     image: "images/South Indian/idli sambar.jpg",
-    time:50
+    time: 50,
+    allergens: []
 },
 {
     name: "Masala Dosa",
@@ -694,7 +758,8 @@ const fooditems = [
     rating: 4.9,
     bestSeller: true,
     image: "images/South Indian/masala dosa.jpg",
-    time:30
+    time: 30,
+    allergens: []
 },
 {
     name: "Podi Idli",
@@ -704,7 +769,8 @@ const fooditems = [
     rating: 4.7,
     bestSeller: false,
     image: "images/South Indian/podi idli.jpg",
-    time:30
+    time: 30,
+    allergens: ["Sesame", "Dairy"]
 },
 {
     name: "Uttapam",
@@ -714,9 +780,10 @@ const fooditems = [
     rating: 4.8,
     bestSeller: false,
     image: "images/South Indian/uttapam.jpg",
-    time:35
+    time: 35,
+    allergens: ["Dairy"]
 },
-]
+];
 
 
 const reviews = [
@@ -853,6 +920,21 @@ document.addEventListener('click', function (e) {
     }
 });
 
+function getAllergenText(allergens) {
+    if (
+        allergens === null ||
+        allergens === undefined ||
+        allergens === "" ||
+        (Array.isArray(allergens) && allergens.length === 0)
+    ) {
+        return "No listed allergens";
+    }
+    if (Array.isArray(allergens)) {
+        return allergens.join(", ");
+    }
+    return String(allergens);
+}
+
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -929,7 +1011,14 @@ function renderFood(){
             }
         }
 
-        return ratingMatch && priceMatch && bestsellerMatch;
+        let allergenMatch = true;
+        const excludedAllergens = getSelectedExcludedAllergens();
+        if (excludedAllergens.length > 0) {
+            const itemAllergens = Array.isArray(food.allergens) ? food.allergens : [];
+            allergenMatch = !excludedAllergens.some(a => itemAllergens.includes(a));
+        }
+
+        return ratingMatch && priceMatch && bestsellerMatch && allergenMatch;
     });
 
     if (finalcards.length === 0) {
@@ -964,7 +1053,14 @@ function renderFood(){
                             <div class="category ">${i.category}</div>
                             <div class="price">₹${i.price}</div>
                         </div>
-                        <div class="foodtime">${i.time} min</div>
+                        <div class="additions">
+                            <div class="allergen-info">
+                                <span class="allergen-label">Allergens:</span>
+                                <span class="allergen-value">${getAllergenText(i.allergens)}</span>
+                            </div>
+                            <div class="foodtime">${i.time} min</div>
+                        </div>
+                        
                 </div>
                                `;
     }
@@ -997,10 +1093,119 @@ for (let id of categorieslist){
 
 applyfilter.addEventListener("click", renderFood);
 
+function getSelectedExcludedAllergens() {
+    if (!allergenCheckboxes) return [];
+    return Array.from(allergenCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+}
+
+function updateAllergenDropdownLabel() {
+    if (!allergenDropdownText) return;
+    const selected = getSelectedExcludedAllergens();
+    if (selected.length === 0) {
+        allergenDropdownText.textContent = "No Exclusions";
+    } else {
+        allergenDropdownText.textContent = `${selected.length} Excluded`;
+    }
+}
+
+function setupSingleDropdown(dropdownId, btnId, textId, menuId, inputEl) {
+    const dropdown = document.querySelector(dropdownId);
+    const btn = document.querySelector(btnId);
+    const textSpan = document.querySelector(textId);
+    const menu = document.querySelector(menuId);
+    if (!dropdown || !btn || !textSpan || !menu || !inputEl) return;
+
+    btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        document.querySelectorAll(".custom-dropdown, .custom-multiselect").forEach(d => {
+            if (d !== dropdown) d.classList.remove("open");
+        });
+        document.querySelectorAll(".dropdown-menu, .multiselect-menu").forEach(m => {
+            if (m !== menu) m.classList.remove("open");
+        });
+
+        dropdown.classList.toggle("open");
+        menu.classList.toggle("open");
+    });
+
+    const options = menu.querySelectorAll(".dropdown-option");
+    options.forEach(opt => {
+        opt.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const val = opt.getAttribute("data-value");
+            inputEl.value = val;
+            textSpan.textContent = val;
+            options.forEach(o => o.classList.remove("selected"));
+            opt.classList.add("selected");
+            dropdown.classList.remove("open");
+            menu.classList.remove("open");
+        });
+    });
+}
+
+setupSingleDropdown("#ratingDropdown", "#ratingDropdownBtn", "#ratingDropdownText", "#ratingMenu", ratingFilter);
+setupSingleDropdown("#pricesDropdown", "#pricesDropdownBtn", "#pricesDropdownText", "#pricesMenu", priceFilter);
+setupSingleDropdown("#bestsellerDropdown", "#bestsellerDropdownBtn", "#bestsellerDropdownText", "#bestsellerMenu", bestsellerFilter);
+
+if (allergenDropdownBtn) {
+    allergenDropdownBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        document.querySelectorAll(".custom-dropdown").forEach(d => d.classList.remove("open"));
+        document.querySelectorAll(".dropdown-menu").forEach(m => m.classList.remove("open"));
+        allergenMultiselect.classList.toggle("open");
+        allergenMenu.classList.toggle("open");
+    });
+}
+
+if (allergenMenu) {
+    allergenMenu.addEventListener("click", function(e) {
+        e.stopPropagation();
+    });
+}
+
+if (allergenCheckboxes) {
+    allergenCheckboxes.forEach(cb => {
+        cb.addEventListener("change", updateAllergenDropdownLabel);
+    });
+}
+
+document.addEventListener("click", function(e) {
+    document.querySelectorAll(".custom-dropdown, .custom-multiselect").forEach(d => {
+        if (!d.contains(e.target)) d.classList.remove("open");
+    });
+    document.querySelectorAll(".dropdown-menu, .multiselect-menu").forEach(m => {
+        if (!m.contains(e.target)) m.classList.remove("open");
+    });
+});
+
 clearfilter.addEventListener("click", () => {
     ratingFilter.value = "All Ratings";
+    const ratingText = document.querySelector("#ratingDropdownText");
+    if (ratingText) ratingText.textContent = "All Ratings";
+    document.querySelectorAll("#ratingMenu .dropdown-option").forEach(o => {
+        o.classList.toggle("selected", o.getAttribute("data-value") === "All Ratings");
+    });
+
     priceFilter.value = "All Prices";
+    const pricesText = document.querySelector("#pricesDropdownText");
+    if (pricesText) pricesText.textContent = "All Prices";
+    document.querySelectorAll("#pricesMenu .dropdown-option").forEach(o => {
+        o.classList.toggle("selected", o.getAttribute("data-value") === "All Prices");
+    });
+
     bestsellerFilter.value = "All Items";
+    const bestsellerText = document.querySelector("#bestsellerDropdownText");
+    if (bestsellerText) bestsellerText.textContent = "All Items";
+    document.querySelectorAll("#bestsellerMenu .dropdown-option").forEach(o => {
+        o.classList.toggle("selected", o.getAttribute("data-value") === "All Items");
+    });
+
+    if (allergenCheckboxes) {
+        allergenCheckboxes.forEach(cb => cb.checked = false);
+    }
+    updateAllergenDropdownLabel();
     displayCategories = "All";
     searchbar.value = "";
     hideSuggestions();
