@@ -1303,6 +1303,7 @@ function renderCart(){
                                   <button class="checkoutbtn">Proceed to Checkout</button>`;
     }
     updateCounts();
+    updateCartIcons();
 }
 
 function renderWishlist(){
@@ -1415,7 +1416,8 @@ cartItemsEl.addEventListener('click', function(e){
         const it = cart.find(c => c.name === name);
         it.qty--;
         if (it.qty <= 0) cart = cart.filter(c => c.name !== name);
-        saveCart(); renderCart();
+        saveCart();
+        renderCart();
     } else if (e.target.closest(".removeitem")){
         removeFromCart(name);
     }
