@@ -819,7 +819,7 @@ const reviews = [
         id: 5,
         review: "Loved everything about this place, from the beautiful interiors to the polite staff. The butter paneer masala and garlic naan had an authentic North Indian flavor and generous portions.",
         rating: 4.9,
-        orderedItem: "Chole Bhature",
+        orderedItem: "Butter Paneer Masala and Garlic Naan",
         date: "22/07/26"
     },
     {

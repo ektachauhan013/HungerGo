@@ -740,7 +740,7 @@ p.menuhead{
 .no-food-message {
     width: 100%;
     text-align: center;
-    color: #3c3c3c;
+    color: #FF5234;
     grid-column: 1 / -1;
 }
 
