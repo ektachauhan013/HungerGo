@@ -884,7 +884,8 @@ searchbar.addEventListener('keypress', function(e){
         const searchText = searchbar.value.toLowerCase().trim();
         
         if (searchText === "") {
-            alert("Please type something to search!");
+            suggestionbox.innerHTML = `<div class="search-error">Please type something to search!</div>`;
+            showSuggestions();
             return;
         }
         
@@ -893,6 +894,15 @@ searchbar.addEventListener('keypress', function(e){
         All.classList.add("activecategory");
         hideSuggestions();
         renderFood();
+
+        setTimeout(() => {
+            const card = Array.from(container.querySelectorAll(".foodcard")).find(c => 
+                c.dataset.name && c.dataset.name.toLowerCase() === searchText
+            );
+            if (card) {
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }, 100);
     }
 });
 
@@ -949,15 +959,27 @@ document.querySelector("#searchicon").addEventListener('click', function(){
     const searchText = searchbar.value.toLowerCase().trim();
     console.log("Search text:", searchText);
     
-    if (searchText === "") {
-        alert("Please type something to search!");
+    if (searchText == "") {
+        suggestionbox.innerHTML = `<div class="search-error">Please type something to search!</div>`;
+        showSuggestions();
         return;
     }
     
     displayCategories = "All";
+    document.querySelectorAll(".categoriescard").forEach(c => c.classList.remove("activecategory"));
+    All.classList.add("activecategory");
     hideSuggestions();
     renderFood();
     console.log("renderFood called!");
+
+    setTimeout(() => {
+        const card = Array.from(container.querySelectorAll(".foodcard")).find(c => 
+            c.dataset.name && c.dataset.name.toLowerCase() === searchText
+        );
+        if (card) {
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }, 100);
 });
 
 function renderFood(){
